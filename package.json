@@ -1,5 +1,5 @@
 {
-  "name": "AlbumFinder",
+  "name": "album-finder-frontend",
   "private": true,
   "version": "0.0.0",
   "description": "AlbumFinder using AngularJS",
