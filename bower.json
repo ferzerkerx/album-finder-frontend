@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "angular": "1.4.10",
+    "angular": "1.4.x",
     "angular-mocks": "1.4.x",
     "jquery": "~2.1.1",
     "bootstrap": "~3.1.1",
@@ -14,8 +14,5 @@
     "angular-resource": "1.4.x",
     "angular-animate": "1.4.x",
     "angucomplete-alt": "1.0.0"
-  },
-  "resolutions": {
-    "angular": "1.4.10"
   }
 }
