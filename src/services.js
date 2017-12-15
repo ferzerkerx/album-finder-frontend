@@ -6,9 +6,8 @@ var afServices = angular.module('afServices', ['ngResource']);
 afServices.factory('albumsService', ['$http', '$location',
     function($http, $location) {
 
-        var appContext = 'http://localhost:8080' || $location.url().substring(0, $location.url().indexOf("/",2));
-        // var appContext =  $location.url().substring(0, $location.url().indexOf("/",2));
-
+        var appContext = APP_URL || $location.url().substring(0, $location.url().indexOf("/",2));
+        
         var albumsService = {contextPath: appContext};
 
         var handleResponse = function(response) {
