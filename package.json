@@ -6,12 +6,12 @@
   "repository": "https://github.com/ferzerkerx/album-finder-frontend",
   "license": "MIT",
   "dependencies": {
-    "angular": "1.6.1",
+    "angular": "1.6.7",
     "jquery": "3.2.1",
     "bootstrap": "3.3.7",
-    "angular-route": "1.6.1",
-    "angular-resource": "1.6.1",
-    "angular-animate": "1.6.1",
+    "angular-route": "1.6.7",
+    "angular-resource": "1.6.7",
+    "angular-animate": "1.6.7",
     "angucomplete-alt": "1.0.0"
   },
   "scripts": {

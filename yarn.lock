@@ -43,25 +43,25 @@ angucomplete-alt@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/angucomplete-alt/-/angucomplete-alt-1.0.0.tgz#5f0f2703e3079014b5dc3b60cfe6a6668c98d09e"
 
-angular-animate@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.1.tgz#19e3b82b7392e2bbdd83af33c0af0d85437f3a14"
+angular-animate@1.6.7:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.6.7.tgz#bc6dbe6a190d019a6fbb2c7373d40f01cfd75899"
 
 angular-mocks@1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.1.tgz#2f44a1b3ac608e93751305bce176c274221d8abd"
 
-angular-resource@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/angular-resource/-/angular-resource-1.6.1.tgz#9eeea8c59238439ba15ad31be0eb70f2442f77a1"
+angular-resource@1.6.7:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/angular-resource/-/angular-resource-1.6.7.tgz#1ac9a33d1715f2042c1321c82ca307e694ffdc93"
 
-angular-route@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.1.tgz#6d1087f4d6a1422026f91a13be86adc8f1d20ec7"
+angular-route@1.6.7:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.7.tgz#020970d93d8b2ce4ca6aff0e0d7922579543cbcf"
 
-angular@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.1.tgz#a7b6d763a74c157325692619e97257e69d9b6a27"
+angular@1.6.7:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.7.tgz#0f89837dae1776b01ccb1fa2096db0d9373d9897"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
