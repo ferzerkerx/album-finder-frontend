@@ -1,7 +1,7 @@
 {
   "name": "album-finder-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "AlbumFinder using AngularJS",
   "repository": "https://github.com/ferzerkerx/album-finder-frontend",
   "license": "MIT",
