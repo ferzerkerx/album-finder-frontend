@@ -13,7 +13,8 @@ export class AlbumServiceService {
     return of(newVar);
   }
 
-  listArtist(): Observable<Artist[]> {
+  listArtistByName(artistName: String): Observable<Artist[]> {
+    console.log(`listArtistByName ${artistName}`);
     const newVar: Artist[] = [{ id: 1, name: 'someName' }];
     return of(newVar);
   }
