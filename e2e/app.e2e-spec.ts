@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('album-finder-frontend2 App', () => {
+describe('album-finder-frontend', () => {
   let page: AppPage;
 
   beforeEach(() => {
