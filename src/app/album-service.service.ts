@@ -9,18 +9,24 @@ import { Artist } from './Artist';
 export class AlbumServiceService {
   constructor() {}
 
-  listAlbums(title, year): Observable<Album[]> {
-    const newVar: Album[] = [{ id: 1, title: 'someTitle', year: year }];
-    return of(newVar);
-  }
-
   listArtistByName(artistName: String): Observable<Artist[]> {
     console.log(`listArtistByName ${artistName}`);
     const newVar: Artist[] = [{ id: 1, name: 'someName' }];
     return of(newVar);
   }
 
-  deleteArtist(id: number) : Promise<number> {
+  deleteArtist(id: number): Promise<number> {
     return Promise.resolve(1);
+  }
+
+  deleteAlbum(id: number): Promise<number> {
+    return Promise.resolve(1);
+  }
+
+  listAlbumsByCriteria(searchCriteria: { title: String; year: String }) {
+    const newVar: Album[] = [
+      { id: 1, title: 'someTitle', year: '2009', artist: new Artist() }
+    ];
+    return of(newVar);
   }
 }

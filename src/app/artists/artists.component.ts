@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlbumServiceService } from '../album-service.service';
 import { Artist } from '../Artist';
-import {UserInfo} from "../UserInfo";
+import { UserInfo } from '../UserInfo';
 
 @Component({
   selector: 'app-artists',
@@ -12,11 +12,10 @@ import {UserInfo} from "../UserInfo";
 export class ArtistsComponent implements OnInit {
   resultArtist$: Artist[];
   userInfo: UserInfo;
-  resultsFilter: String;
 
   constructor(private albumService: AlbumServiceService) {
     this.albumService = albumService;
-    this.userInfo = {isAdmin: true}; //TODO this should come from the logged in user
+    this.userInfo = { isAdmin: true }; //TODO this should come from the logged in user
   }
 
   ngOnInit() {}
@@ -28,7 +27,7 @@ export class ArtistsComponent implements OnInit {
   }
 
   createArtist() {
-    let newArtist : Artist = new Artist();
+    let newArtist: Artist = new Artist();
     // TODO $('#artistModal').modal('show');
   }
 
@@ -39,10 +38,11 @@ export class ArtistsComponent implements OnInit {
   }
 
   deleteArtist(artist: Artist) {
-    const shouldDeleteArtist = window.confirm(`Are you sure you want to delete: ${artist.name} ?`);
+    const shouldDeleteArtist = window.confirm(
+      `Are you sure you want to delete: ${artist.name} ?`
+    );
     if (shouldDeleteArtist) {
-      this.albumService.deleteArtist(artist.id)
-        .then(() => {
+      this.albumService.deleteArtist(artist.id).then(() => {
         // TODO $route.reload();
       });
     }
