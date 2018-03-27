@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { AlbumServiceService } from './album-service.service';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [AlbumServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
