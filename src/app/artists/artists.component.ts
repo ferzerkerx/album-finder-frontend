@@ -29,15 +29,22 @@ export class ArtistsComponent implements OnInit {
 
   createArtist() {
     let newArtist : Artist = new Artist();
-
     // TODO $('#artistModal').modal('show');
   }
 
   editArtist(artist: Artist) {
+    console.log(`editing ${JSON.stringify(artist)}`);
 
+    //TODO
   }
 
-  deleteArtist(artist: Artist){
-
+  deleteArtist(artist: Artist) {
+    const shouldDeleteArtist = window.confirm(`Are you sure you want to delete: ${artist.name} ?`);
+    if (shouldDeleteArtist) {
+      this.albumService.deleteArtist(artist.id)
+        .then(() => {
+        // TODO $route.reload();
+      });
+    }
   }
 }
