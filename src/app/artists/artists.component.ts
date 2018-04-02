@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlbumServiceService } from '../album-service.service';
 import { Artist } from '../Artist';
-import { UserInfo } from '../UserInfo';
+import { LoginAwareComponent } from '../../LoginAwareComponent';
+import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-artists',
   templateUrl: './artists.component.html',
   styleUrls: ['./artists.component.css']
 })
-export class ArtistsComponent implements OnInit {
+export class ArtistsComponent extends LoginAwareComponent {
   resultArtist$: Artist[];
-  userInfo: UserInfo;
 
-  constructor(private albumService: AlbumServiceService) {
+  constructor(
+    private albumService: AlbumServiceService,
+    userService: UserServiceService
+  ) {
+    super(userService);
     this.albumService = albumService;
-    this.userInfo = { isAdmin: true }; //TODO this should come from the logged in user
   }
-
-  ngOnInit() {}
 
   onSubmit(f: NgForm) {
     this.albumService

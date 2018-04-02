@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Album } from '../Album';
-import { UserInfo } from '../UserInfo';
 import { AlbumServiceService } from '../album-service.service';
 import { NgForm } from '@angular/forms';
+import { LoginAwareComponent } from '../../LoginAwareComponent';
+import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.css']
 })
-export class AlbumsComponent implements OnInit {
+export class AlbumsComponent extends LoginAwareComponent {
   resultAlbums: Album[];
-  userInfo: UserInfo;
 
-  constructor(private albumService: AlbumServiceService) {
+  constructor(
+    private albumService: AlbumServiceService,
+    userService: UserServiceService
+  ) {
+    super(userService);
     this.albumService = albumService;
-    this.userInfo = { isAdmin: true }; //TODO this should come from the logged in user
   }
-
-  ngOnInit() {}
 
   createAlbum() {
     let newAlbum: Album = new Album();

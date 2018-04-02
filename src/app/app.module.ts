@@ -8,11 +8,13 @@ import { AlbumServiceService } from './album-service.service';
 import { ArtistsComponent } from './artists/artists.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AlbumsComponent } from './albums/albums.component';
+import { UserServiceService } from './user-service.service';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, ArtistsComponent, AlbumsComponent],
+  declarations: [AppComponent, ArtistsComponent, AlbumsComponent, LoginModalComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
-  providers: [AlbumServiceService],
+  providers: [AlbumServiceService, UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
