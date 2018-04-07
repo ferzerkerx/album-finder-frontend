@@ -14,6 +14,7 @@ export class UserServiceService {
   }
 
   doLogin(credentials) {
+    console.log(`logging with credentials ${JSON.stringify(credentials)}`);
     //TODO call http service
     const userInfo: UserInfo = {
       userName: 'myUserName',

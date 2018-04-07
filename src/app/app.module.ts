@@ -10,11 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AlbumsComponent } from './albums/albums.component';
 import { UserServiceService } from './user-service.service';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+import {BsModalService, ComponentLoaderFactory, ModalModule, PositioningService} from "ngx-bootstrap";
 
 @NgModule({
   declarations: [AppComponent, ArtistsComponent, AlbumsComponent, LoginModalComponent],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
-  providers: [AlbumServiceService, UserServiceService],
+  entryComponents: [LoginModalComponent],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, ModalModule],
+  providers: [AlbumServiceService, UserServiceService, BsModalService, ComponentLoaderFactory, PositioningService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

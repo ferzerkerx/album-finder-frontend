@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserServiceService} from "../user-service.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-login-modal',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginModalComponent implements OnInit {
 
-  constructor() { }
+  error: String;
+
+  constructor(private userService: UserServiceService) {
+
+  }
 
   ngOnInit() {
+  }
+
+
+
+  login(f: NgForm) {
+    const credentials = {
+      userName: f.value.userName,
+      password: f.value.password
+    };
+    //TODO try catch for failures
+    this.userService.doLogin(credentials)
   }
 
 }
