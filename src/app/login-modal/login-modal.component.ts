@@ -1,24 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {UserServiceService} from "../user-service.service";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
+
+import {UserServiceService} from "../user-service.service";
+import {BsModalRef, ModalDirective} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginModalComponent implements OnInit {
+export class LoginModalComponent {
 
   error: String;
+  @ViewChild(ModalDirective) modal: ModalDirective;
 
-  constructor(private userService: UserServiceService) {
-
+  constructor(private userService: UserServiceService, public bsModalRef: BsModalRef) {
   }
-
-  ngOnInit() {
-  }
-
-
 
   login(f: NgForm) {
     const credentials = {
@@ -26,7 +23,8 @@ export class LoginModalComponent implements OnInit {
       password: f.value.password
     };
     //TODO try catch for failures
-    this.userService.doLogin(credentials)
+    this.userService.doLogin(credentials);
+    this.bsModalRef.hide();
   }
 
 }
