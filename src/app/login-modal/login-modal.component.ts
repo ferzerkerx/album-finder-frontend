@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgForm} from "@angular/forms";
 
 import {UserServiceService} from "../user-service.service";
-import {BsModalRef, ModalDirective} from "ngx-bootstrap";
+import {BsModalRef} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-login-modal',
@@ -10,9 +10,6 @@ import {BsModalRef, ModalDirective} from "ngx-bootstrap";
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent {
-
-  error: String;
-  @ViewChild(ModalDirective) modal: ModalDirective;
 
   constructor(private userService: UserServiceService, public bsModalRef: BsModalRef) {
   }
@@ -22,7 +19,6 @@ export class LoginModalComponent {
       userName: f.value.userName,
       password: f.value.password
     };
-    //TODO try catch for failures
     this.userService.doLogin(credentials);
     this.bsModalRef.hide();
   }
