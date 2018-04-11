@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { AlbumServiceService } from '../album-service.service';
-import { Artist } from '../Artist';
-import { LoginAwareComponent } from '../../LoginAwareComponent';
-import { UserServiceService } from '../user-service.service';
+import {Component} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {AlbumServiceService} from '../album-service.service';
+import {Artist} from '../Artist';
+import {LoginAwareComponent} from '../../LoginAwareComponent';
+import {UserServiceService} from '../user-service.service';
+import {BsModalService} from "ngx-bootstrap";
+import {CreateArtistModalComponent} from "../create-artist-modal/create-artist-modal.component";
 
 @Component({
   selector: 'app-artists',
@@ -15,10 +17,10 @@ export class ArtistsComponent extends LoginAwareComponent {
 
   constructor(
     private albumService: AlbumServiceService,
-    userService: UserServiceService
+    userService: UserServiceService,
+    private bsModalService: BsModalService,
   ) {
     super(userService);
-    this.albumService = albumService;
   }
 
   onSubmit(f: NgForm) {
@@ -29,7 +31,8 @@ export class ArtistsComponent extends LoginAwareComponent {
 
   createArtist() {
     let newArtist: Artist = new Artist();
-    // TODO $('#artistModal').modal('show');
+    let initialState = {artist: newArtist};
+    this.bsModalService.show(CreateArtistModalComponent, {initialState});
   }
 
   editArtist(artist: Artist) {
