@@ -3,12 +3,12 @@
 
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" (click)="bsModalRef.hide()">&times;</button>
         <h4 class="modal-title">Artist</h4>
+        <button type="button" class="close" (click)="bsModalRef.hide()">&times;</button>
       </div>
       <form #f="ngForm" (ngSubmit)="save(f)">
           <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" name="name" ngModel="name" required/>
+          <input type="text" class="form-control" id="name" name="name" ngModel required/>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

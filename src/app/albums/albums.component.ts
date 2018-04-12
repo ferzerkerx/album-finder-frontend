@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Album } from '../Album';
-import { AlbumServiceService } from '../album-service.service';
+import { AlbumService } from '../album.service';
 import { NgForm } from '@angular/forms';
 import { LoginAwareComponent } from '../../LoginAwareComponent';
 import { UserServiceService } from '../user-service.service';
@@ -14,7 +14,7 @@ export class AlbumsComponent extends LoginAwareComponent {
   resultAlbums: Album[];
 
   constructor(
-    private albumService: AlbumServiceService,
+    private albumService: AlbumService,
     userService: UserServiceService
   ) {
     super(userService);

@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {AlbumServiceService} from '../album-service.service';
+import {AlbumService} from '../album.service';
 import {Artist} from '../Artist';
 import {LoginAwareComponent} from '../../LoginAwareComponent';
 import {UserServiceService} from '../user-service.service';
 import {BsModalService} from "ngx-bootstrap";
-import {CreateArtistModalComponent} from "../create-artist-modal/create-artist-modal.component";
+import {ArtistModalComponent} from "../artist-modal/artist-modal.component";
 
 @Component({
   selector: 'app-artists',
@@ -16,7 +16,7 @@ export class ArtistsComponent extends LoginAwareComponent {
   resultArtist$: Artist[];
 
   constructor(
-    private albumService: AlbumServiceService,
+    private albumService: AlbumService,
     userService: UserServiceService,
     private bsModalService: BsModalService,
   ) {
@@ -32,13 +32,15 @@ export class ArtistsComponent extends LoginAwareComponent {
   createArtist() {
     let newArtist: Artist = new Artist();
     let initialState = {artist: newArtist};
-    this.bsModalService.show(CreateArtistModalComponent, {initialState});
+    this.bsModalService.show(ArtistModalComponent, {initialState});
   }
 
   editArtist(artist: Artist) {
     console.log(`editing ${JSON.stringify(artist)}`);
 
-    //TODO
+    let newArtist: Artist = {...artist};
+    let initialState = {artist: newArtist};
+    this.bsModalService.show(ArtistModalComponent, {initialState});
   }
 
   deleteArtist(artist: Artist) {

@@ -6,7 +6,7 @@ import { Artist } from './Artist';
 
 @Injectable()
 //TODO this should be the real thing
-export class AlbumServiceService {
+export class AlbumService {
   constructor() {}
 
   listArtistByName(artistName: String): Observable<Artist[]> {
@@ -23,10 +23,15 @@ export class AlbumServiceService {
     return Promise.resolve(1);
   }
 
-  listAlbumsByCriteria(searchCriteria: { title: String; year: String }) {
+  listAlbumsByCriteria(searchCriteria: { title: String; year: String }) : Observable<Album[]> {
     const newVar: Album[] = [
       { id: 1, title: 'someTitle', year: '2009', artist: new Artist() }
     ];
     return of(newVar);
+  }
+
+  saveArtist(artist) : Promise<number> {
+    console.log(`saving artist ${JSON.stringify(artist)}`);
+    return Promise.resolve(1);
   }
 }

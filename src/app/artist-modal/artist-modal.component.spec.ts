@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateArtistModalComponent } from './create-artist-modal.component';
+import { ArtistModalComponent } from './create-artist-modal.component';
 
 describe('CreateArtistModalComponent', () => {
-  let component: CreateArtistModalComponent;
-  let fixture: ComponentFixture<CreateArtistModalComponent>;
+  let component: ArtistModalComponent;
+  let fixture: ComponentFixture<ArtistModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateArtistModalComponent ]
+      declarations: [ ArtistModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateArtistModalComponent);
+    fixture = TestBed.createComponent(ArtistModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
