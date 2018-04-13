@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { Album } from '../Album';
-import { AlbumService } from '../album.service';
-import { NgForm } from '@angular/forms';
-import { LoginAwareComponent } from '../../LoginAwareComponent';
-import { UserServiceService } from '../user-service.service';
+import {Component} from '@angular/core';
+import {Album} from '../Album';
+import {AlbumService} from '../album.service';
+import {NgForm} from '@angular/forms';
+import {LoginAwareComponent} from '../../LoginAwareComponent';
+import {UserServiceService} from '../user-service.service';
+import {BsModalService} from "ngx-bootstrap";
+import {AlbumModalComponent} from "../album-modal/album-modal.component";
 
 @Component({
   selector: 'app-albums',
@@ -15,21 +17,23 @@ export class AlbumsComponent extends LoginAwareComponent {
 
   constructor(
     private albumService: AlbumService,
+    private bsModalService: BsModalService,
     userService: UserServiceService
+
   ) {
     super(userService);
-    this.albumService = albumService;
   }
 
   createAlbum() {
-    let newAlbum: Album = new Album();
-    // TODO $('#albumModal').modal('show');
+    let album: Album = new Album();
+    const initialState = { album: album };
+    this.bsModalService.show(AlbumModalComponent, { initialState });
   }
 
-  editAlbum(album: Album) {
-    console.log(`editing ${JSON.stringify(album)}`);
-
-    //TODO
+  editAlbum(selectedAlbum: Album) {
+    let album: Album = { ...selectedAlbum };
+    const initialState = { album: album };
+    this.bsModalService.show(AlbumModalComponent, { initialState });
   }
 
   onSubmit(f: NgForm) {

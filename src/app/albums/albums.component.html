@@ -13,7 +13,7 @@
   </form>
 
   <div *ngIf="userInfo.isAdmin">
-    <button class="btn btn-info" ng-show="userInfo.isAdmin" (click)="createAlbum()">Create</button>
+    <button class="btn btn-info" (click)="createAlbum()">Create</button>
   </div>
 
   <div *ngIf="resultAlbums && resultAlbums.length > 0">

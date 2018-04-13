@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { AlbumService } from '../album.service';
-import { Artist } from '../Artist';
-import { LoginAwareComponent } from '../../LoginAwareComponent';
-import { UserServiceService } from '../user-service.service';
-import { BsModalService } from 'ngx-bootstrap';
-import { ArtistModalComponent } from '../artist-modal/artist-modal.component';
+import {Component} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {AlbumService} from '../album.service';
+import {Artist} from '../Artist';
+import {LoginAwareComponent} from '../../LoginAwareComponent';
+import {UserServiceService} from '../user-service.service';
+import {BsModalService} from 'ngx-bootstrap';
+import {ArtistModalComponent} from '../artist-modal/artist-modal.component';
 
 @Component({
   selector: 'app-artists',
@@ -30,16 +30,14 @@ export class ArtistsComponent extends LoginAwareComponent {
   }
 
   createArtist() {
-    let newArtist: Artist = new Artist();
-    let initialState = { artist: newArtist };
+    const artist: Artist = new Artist();
+    const initialState = { artist: artist };
     this.bsModalService.show(ArtistModalComponent, { initialState });
   }
 
-  editArtist(artist: Artist) {
-    console.log(`editing ${JSON.stringify(artist)}`);
-
-    let newArtist: Artist = { ...artist };
-    let initialState = { artist: newArtist };
+  editArtist(selectedArtist: Artist) {
+    const artist: Artist = { ...selectedArtist };
+    const initialState = { artist: artist };
     this.bsModalService.show(ArtistModalComponent, { initialState });
   }
 

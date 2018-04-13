@@ -1,3 +1,27 @@
-<p>
-  album-modal works!
-</p>
+<div id="albumModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Album</h4>
+        <button type="button" class="close" (click)="bsModalRef.hide()">&times;</button>
+      </div>
+      <form #f="ngForm" (ngSubmit)="save(f)">
+        <div class="form-group" >
+          <label for="name">Title:</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)] = "album.title" required/>
+        </div>
+
+        <div class="form-group" >
+          <label for="year">Year:</label>
+          <input type="text" class="form-control" id="year" name="year" [(ngModel)] = "album.year" pattern="/^[1-9]\d{3}$/" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="artist">Artist:</label>
+          <input type="text" class="form-control" id="artist" name="artist" [(ngModel)] = "album.artist.name" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

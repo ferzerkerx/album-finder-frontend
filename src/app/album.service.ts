@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { Album } from './Album';
-import { Artist } from './Artist';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import {Album} from './Album';
+import {Artist} from './Artist';
 
 @Injectable()
 //TODO this should be the real thing
@@ -33,8 +33,13 @@ export class AlbumService {
     return of(newVar);
   }
 
-  saveArtist(artist): Promise<number> {
+  saveArtist(artist: Artist): Promise<number> {
     console.log(`saving artist ${JSON.stringify(artist)}`);
+    return Promise.resolve(1);
+  }
+
+  saveAlbum(album: Album): Promise<number> {
+    console.log(`saving album ${JSON.stringify(album)}`);
     return Promise.resolve(1);
   }
 }
