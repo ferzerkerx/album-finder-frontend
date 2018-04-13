@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Artist} from "../Artist";
 import {BsModalRef} from "ngx-bootstrap";
 import {NgForm} from "@angular/forms";
@@ -9,20 +9,16 @@ import {AlbumService} from "../album.service";
   templateUrl: './artist-modal.component.html',
   styleUrls: ['./artist-modal.component.css']
 })
-export class ArtistModalComponent  implements OnInit {
+export class ArtistModalComponent {
 
   artist: Artist;
 
   constructor(private albumService: AlbumService, public bsModalRef: BsModalRef) {
-    console.log(JSON.stringify(this.artist));
-  }
-
-  ngOnInit() {
-    console.log(JSON.stringify(this.artist));
   }
 
   save(f: NgForm) {
     const data = {
+      id: this.artist.id,
       name: f.value.name
     };
     this.albumService.saveArtist(data)
