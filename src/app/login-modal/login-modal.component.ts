@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {NgForm} from "@angular/forms";
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import {UserServiceService} from "../user-service.service";
-import {BsModalRef} from "ngx-bootstrap";
+import { UserServiceService } from '../user-service.service';
+import { BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-login-modal',
@@ -10,9 +10,10 @@ import {BsModalRef} from "ngx-bootstrap";
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent {
-
-  constructor(private userService: UserServiceService, public bsModalRef: BsModalRef) {
-  }
+  constructor(
+    private userService: UserServiceService,
+    public bsModalRef: BsModalRef
+  ) {}
 
   login(f: NgForm) {
     const credentials = {
@@ -22,5 +23,4 @@ export class LoginModalComponent {
     this.userService.doLogin(credentials);
     this.bsModalRef.hide();
   }
-
 }

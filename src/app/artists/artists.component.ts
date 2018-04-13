@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {AlbumService} from '../album.service';
-import {Artist} from '../Artist';
-import {LoginAwareComponent} from '../../LoginAwareComponent';
-import {UserServiceService} from '../user-service.service';
-import {BsModalService} from "ngx-bootstrap";
-import {ArtistModalComponent} from "../artist-modal/artist-modal.component";
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AlbumService } from '../album.service';
+import { Artist } from '../Artist';
+import { LoginAwareComponent } from '../../LoginAwareComponent';
+import { UserServiceService } from '../user-service.service';
+import { BsModalService } from 'ngx-bootstrap';
+import { ArtistModalComponent } from '../artist-modal/artist-modal.component';
 
 @Component({
   selector: 'app-artists',
@@ -18,7 +18,7 @@ export class ArtistsComponent extends LoginAwareComponent {
   constructor(
     private albumService: AlbumService,
     userService: UserServiceService,
-    private bsModalService: BsModalService,
+    private bsModalService: BsModalService
   ) {
     super(userService);
   }
@@ -31,16 +31,16 @@ export class ArtistsComponent extends LoginAwareComponent {
 
   createArtist() {
     let newArtist: Artist = new Artist();
-    let initialState = {artist: newArtist};
-    this.bsModalService.show(ArtistModalComponent, {initialState});
+    let initialState = { artist: newArtist };
+    this.bsModalService.show(ArtistModalComponent, { initialState });
   }
 
   editArtist(artist: Artist) {
     console.log(`editing ${JSON.stringify(artist)}`);
 
-    let newArtist: Artist = {...artist};
-    let initialState = {artist: newArtist};
-    this.bsModalService.show(ArtistModalComponent, {initialState});
+    let newArtist: Artist = { ...artist };
+    let initialState = { artist: newArtist };
+    this.bsModalService.show(ArtistModalComponent, { initialState });
   }
 
   deleteArtist(artist: Artist) {

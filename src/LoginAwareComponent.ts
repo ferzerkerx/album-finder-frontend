@@ -7,7 +7,7 @@ export class LoginAwareComponent {
   constructor(private userService: UserServiceService) {
     userService.userInfo$.subscribe(userInfo => {
       console.log(`userInfo received: ${JSON.stringify(userInfo)}`);
-      this.userInfo = userInfo
+      this.userInfo = userInfo;
     });
   }
 }

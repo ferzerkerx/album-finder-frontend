@@ -9,9 +9,7 @@ export class UserServiceService {
 
   userInfo$: Observable<UserInfo> = this.userInfoSource.asObservable();
 
-  constructor() {
-
-  }
+  constructor() {}
 
   doLogin(credentials) {
     console.log(`logging with credentials ${JSON.stringify(credentials)}`);

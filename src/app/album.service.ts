@@ -23,14 +23,17 @@ export class AlbumService {
     return Promise.resolve(1);
   }
 
-  listAlbumsByCriteria(searchCriteria: { title: String; year: String }) : Observable<Album[]> {
+  listAlbumsByCriteria(searchCriteria: {
+    title: String;
+    year: String;
+  }): Observable<Album[]> {
     const newVar: Album[] = [
       { id: 1, title: 'someTitle', year: '2009', artist: new Artist() }
     ];
     return of(newVar);
   }
 
-  saveArtist(artist) : Promise<number> {
+  saveArtist(artist): Promise<number> {
     console.log(`saving artist ${JSON.stringify(artist)}`);
     return Promise.resolve(1);
   }

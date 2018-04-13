@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginModalComponent } from './login-modal.component';
+import { AlbumModalComponent } from './album-modal.component';
 
-describe('LoginModalComponent', () => {
-  let component: LoginModalComponent;
-  let fixture: ComponentFixture<LoginModalComponent>;
+describe('AlbumModalComponent', () => {
+  let component: AlbumModalComponent;
+  let fixture: ComponentFixture<AlbumModalComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [LoginModalComponent]
+        declarations: [AlbumModalComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginModalComponent);
+    fixture = TestBed.createComponent(AlbumModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

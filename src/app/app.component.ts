@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {LoginModalComponent} from "./login-modal/login-modal.component";
-import {BsModalService} from "ngx-bootstrap";
+import { Component } from '@angular/core';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-root',
