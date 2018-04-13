@@ -8,7 +8,7 @@ import { AlbumService } from './album.service';
 import { ArtistsComponent } from './artists/artists.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AlbumsComponent } from './albums/albums.component';
-import { UserServiceService } from './user-service.service';
+import { UserService } from './user.service';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import {
   BsModalService,
@@ -42,7 +42,7 @@ import { AlbumModalComponent } from './album-modal/album-modal.component';
   ],
   providers: [
     AlbumService,
-    UserServiceService,
+    UserService,
     BsModalService,
     ComponentLoaderFactory,
     PositioningService

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { UserServiceService } from '../user-service.service';
+import { UserService } from '../user.service';
 import { BsModalRef } from 'ngx-bootstrap';
 
 @Component({
@@ -11,13 +11,13 @@ import { BsModalRef } from 'ngx-bootstrap';
 })
 export class LoginModalComponent {
   constructor(
-    private userService: UserServiceService,
+    private userService: UserService,
     public bsModalRef: BsModalRef
   ) {}
 
   login(f: NgForm) {
     const credentials = {
-      userName: f.value.userName,
+      username: f.value.username,
       password: f.value.password
     };
     this.userService.doLogin(credentials);
