@@ -5,13 +5,13 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
+import {environment} from "../environments/environment";
 
 @Injectable()
 export class UserService {
   private userInfoSource = new Subject<UserInfo>();
 
   userInfo$: Observable<UserInfo> = this.userInfoSource.asObservable();
-  private url: String = 'http://localhost:8080';
 
   constructor(private http:HttpClient) {}
 
@@ -26,7 +26,7 @@ export class UserService {
       })
     };
 
-    return this.http.get<UserInfo>(this.url + '/user', httpOptions)
+    return this.http.get<UserInfo>(environment.apiUrl + '/user', httpOptions)
       .pipe(
         catchError(this.handleError)
       )
@@ -46,7 +46,7 @@ export class UserService {
       isAdmin: false,
       authenticated: false
     };
-    return this.http.get<UserInfo>(this.url + '/logout')
+    return this.http.get<UserInfo>(environment.apiUrl + '/logout')
       .pipe(
         catchError(this.handleError)
       )
