@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import {Artist} from "../Artist";
-import {Album} from "../Album";
-import {AlbumService} from "../album.service";
-import {BsModalRef} from "ngx-bootstrap";
-import {NgForm} from "@angular/forms";
+import {Component} from '@angular/core';
+import {Album} from '../Album';
+import {AlbumService} from '../album.service';
+import {BsModalRef} from 'ngx-bootstrap';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-album-modal',
@@ -19,7 +18,7 @@ export class AlbumModalComponent {
   ) {}
 
   save(f: NgForm) {
-    const data:Album = {
+    const data: Album = {
       id: this.album.id,
       year: f.value.year,
       title: f.value.title,

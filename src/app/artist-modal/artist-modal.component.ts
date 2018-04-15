@@ -18,7 +18,7 @@ export class ArtistModalComponent {
   ) {}
 
   save(f: NgForm) {
-    const data:Artist = {
+    const data: Artist = {
       id: this.artist.id,
       name: f.value.name
     };

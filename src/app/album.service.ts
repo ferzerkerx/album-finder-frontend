@@ -1,18 +1,21 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
-import {Album} from './Album';
-import {Artist} from './Artist';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { Album } from './Album';
+import { Artist } from './Artist';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { parseResponse, url } from './service.util';
 
 @Injectable()
 //TODO this should be the real thing
 export class AlbumService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  listArtistByName(artistName: String): Observable<Artist[]> {
-    console.log(`listArtistByName ${artistName}`);
-    const newVar: Artist[] = [{ id: 1, name: 'someName' }];
-    return of(newVar);
+  listArtistByName(artistName: string): Observable<Artist[]> {
+    const params = new HttpParams().set('name', artistName);
+    return this.http
+      .get<Artist[]>(url('/artist/search'), { params })
+      .let(parseResponse);
   }
 
   deleteArtist(id: number): Promise<number> {

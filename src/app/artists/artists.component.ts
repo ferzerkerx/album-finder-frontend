@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {AlbumService} from '../album.service';
-import {Artist} from '../Artist';
-import {LoginAwareComponent} from '../../LoginAwareComponent';
-import {UserService} from '../user.service';
-import {BsModalService} from 'ngx-bootstrap';
-import {ArtistModalComponent} from '../artist-modal/artist-modal.component';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AlbumService } from '../album.service';
+import { Artist } from '../Artist';
+import { LoginAwareComponent } from '../../LoginAwareComponent';
+import { UserService } from '../user.service';
+import { BsModalService } from 'ngx-bootstrap';
+import { ArtistModalComponent } from '../artist-modal/artist-modal.component';
 
 @Component({
   selector: 'app-artists',
