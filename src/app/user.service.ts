@@ -28,7 +28,7 @@ export class UserService {
       });
 
     return this.http
-      .get<UserInfo>(url('user'), {headers})
+      .post<UserInfo>(url('user'), {},{headers})
       .pipe(catchError(handleError))
       .subscribe(value => {
         const userInfo: UserInfo = {
@@ -49,7 +49,7 @@ export class UserService {
       authenticated: false
     };
     return this.http
-      .get<UserInfo>(url('logout'))
+      .post<UserInfo>(url('logout'), {})
       .pipe(catchError(handleError))
       .subscribe(value => this.userInfoSource.next(loggedOutUser));
   }
