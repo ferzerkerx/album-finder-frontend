@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {UserInfo} from './UserInfo';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {handleError, url} from './service.util';
+import { Injectable } from '@angular/core';
+import { UserInfo } from './UserInfo';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { handleError, url } from './service.util';
 
 @Injectable()
 export class UserService {
@@ -23,12 +23,11 @@ export class UserService {
     );
 
     const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Basic ${hashedCredentials}`
-      });
+      Authorization: `Basic ${hashedCredentials}`
+    });
 
     return this.http
-      .post<UserInfo>(url('user'), {},{headers})
+      .post<UserInfo>(url('user'), {}, { headers })
       .pipe(catchError(handleError))
       .subscribe(value => {
         const userInfo: UserInfo = {

@@ -12,7 +12,9 @@ export const url = path => {
 export const parseResponse = pipe(catchError(handleError), _responseData);
 
 function _responseData<T>(observable: Observable<T>) {
-  return observable.filter(value => value['data']).map(value => value['data']);
+  return observable
+    .filter(value => value && value['data'])
+    .map(value => value['data']);
 }
 
 //TODO refine

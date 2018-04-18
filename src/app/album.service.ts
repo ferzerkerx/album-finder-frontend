@@ -1,17 +1,16 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
-import {Album} from './Album';
-import {Artist} from './Artist';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {parseResponse, url} from './service.util';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Album } from './Album';
+import { Artist } from './Artist';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { parseResponse, url } from './service.util';
 
 @Injectable()
 export class AlbumService {
   constructor(private http: HttpClient) {}
 
   listArtistByName(artistName: string): Observable<Artist[]> {
-    const params = new HttpParams().set('name', artistName);
+    const params: HttpParams = new HttpParams().set('name', artistName);
     return this.http
       .get<Artist[]>(url('artist/search'), { params })
       .let(parseResponse);
@@ -20,32 +19,59 @@ export class AlbumService {
   deleteArtist(id: number): Promise<number> {
     return this.http
       .delete<number>(url(`admin/artist/${id}`))
-      .let(parseResponse).toPromise();
+      .let(parseResponse)
+      .toPromise();
   }
 
   deleteAlbum(id: number): Promise<number> {
-    return Promise.resolve(1);
+    return this.http
+      .delete<number>(url(`admin/album/${id}`))
+      .let(parseResponse)
+      .toPromise();
   }
 
   listAlbumsByCriteria(searchCriteria: {
-    title: String;
-    year: String;
+    title: string;
+    year: string;
   }): Observable<Album[]> {
-    const newVar: Album[] = [
-      { id: 1, title: 'someTitle', year: '2009', artist: new Artist() }
-    ];
-    return of(newVar);
+    const params: HttpParams = new HttpParams()
+      .set('title', searchCriteria.title)
+      .set('year', searchCriteria.year);
+
+    return this.http
+      .get<Artist[]>(url('albums/search'), { params })
+      .let(parseResponse);
   }
 
   saveArtist(artist: Artist): Promise<number> {
     console.log(`saving artist ${JSON.stringify(artist)}`);
-    return this.http
-      .post<number>(url(`admin/artist`), artist)
-      .let(parseResponse).toPromise();
+    const isExistingArtist: boolean = artist.id && artist.id > 0;
+    if (isExistingArtist) {
+      return this.http
+        .put<number>(url(`admin/artist/${artist.id}`), artist)
+        .let(parseResponse)
+        .toPromise();
+    } else {
+      return this.http
+        .post<number>(url(`admin/artist`), artist)
+        .let(parseResponse)
+        .toPromise();
+    }
   }
 
   saveAlbum(album: Album): Promise<number> {
     console.log(`saving album ${JSON.stringify(album)}`);
-    return Promise.resolve(1);
+    const isExistingAlbum: boolean = album.id && album.id > 0;
+    if (isExistingAlbum) {
+      return this.http
+        .put<number>(url(`admin/album/${album.id}`), album)
+        .let(parseResponse)
+        .toPromise();
+    } else {
+      return this.http
+        .post<number>(url(`/admin/artist/${album.artist.id}/album`), album)
+        .let(parseResponse)
+        .toPromise();
+    }
   }
 }

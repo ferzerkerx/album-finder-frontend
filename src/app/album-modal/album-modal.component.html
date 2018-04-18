@@ -7,8 +7,8 @@
       </div>
       <form #f="ngForm" (ngSubmit)="save(f)">
         <div class="form-group" >
-          <label for="name">Title:</label>
-          <input type="text" class="form-control" id="name" name="name" [(ngModel)] = "album.title" required/>
+          <label for="title">Title:</label>
+          <input type="text" class="form-control" id="title" name="title" [(ngModel)] = "album.title" required/>
         </div>
 
         <div class="form-group" >
@@ -18,7 +18,7 @@
 
         <div class="form-group">
           <label for="artist">Artist:</label>
-          <input type="text" class="form-control" id="artist" name="artist" [(ngModel)] = "album.artist.name" required/>
+          <input type="text" class="form-control" id="artist" name="artist" [(ngModel)] = "album.artist.name" readonly/>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

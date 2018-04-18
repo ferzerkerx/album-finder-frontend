@@ -1,8 +1,8 @@
 import { Artist } from './Artist';
 
 export class Album {
-  id: number;
+  id?: number;
   title: string;
   year: string;
-  artist: Artist = new Artist();
+  artist?: Artist = new Artist();
 }
