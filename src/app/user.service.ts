@@ -18,9 +18,6 @@ export class UserService {
     let hashedCredentials = btoa(
       `${credentials.username}:${credentials.password}`
     );
-    console.log(
-      `logging with credentials ${JSON.stringify(hashedCredentials)}`
-    );
 
     const headers = new HttpHeaders({
       Authorization: `Basic ${hashedCredentials}`
@@ -50,6 +47,6 @@ export class UserService {
     return this.http
       .post<UserInfo>(url('logout'), {})
       .pipe(catchError(handleError))
-      .subscribe(value => this.userInfoSource.next(loggedOutUser));
+      .subscribe(() => this.userInfoSource.next(loggedOutUser));
   }
 }

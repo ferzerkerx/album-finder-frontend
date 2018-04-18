@@ -44,7 +44,6 @@ export class AlbumService {
   }
 
   saveArtist(artist: Artist): Promise<number> {
-    console.log(`saving artist ${JSON.stringify(artist)}`);
     const isExistingArtist: boolean = artist.id && artist.id > 0;
     if (isExistingArtist) {
       return this.http
@@ -60,7 +59,6 @@ export class AlbumService {
   }
 
   saveAlbum(album: Album): Promise<number> {
-    console.log(`saving album ${JSON.stringify(album)}`);
     const isExistingAlbum: boolean = album.id && album.id > 0;
     if (isExistingAlbum) {
       return this.http

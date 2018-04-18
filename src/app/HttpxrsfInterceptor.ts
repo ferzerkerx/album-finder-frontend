@@ -20,7 +20,6 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const requestMethod = HttpXsrfInterceptor.requestMethod(req);
-    console.log(`requestMethod: ${requestMethod}`);
 
     if (HttpXsrfInterceptor.shouldInterceptRequest(requestMethod)) {
       const token = this.tokenExtractor.getToken() as string;
