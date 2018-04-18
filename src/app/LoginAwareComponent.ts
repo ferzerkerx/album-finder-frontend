@@ -1,10 +1,10 @@
-import { UserService } from './app/user.service';
-import { UserInfo } from './app/UserInfo';
+import { UserService } from './user.service';
+import { UserInfo } from './UserInfo';
 
 export class LoginAwareComponent {
   protected userInfo: UserInfo = new UserInfo();
 
-  constructor(private userService: UserService) {
+  constructor(protected userService: UserService) {
     userService.userInfo$.subscribe(userInfo => {
       this.userInfo = userInfo;
     });

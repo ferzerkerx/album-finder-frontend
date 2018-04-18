@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlbumService } from '../album.service';
 import { Artist } from '../Artist';
-import { LoginAwareComponent } from '../../LoginAwareComponent';
+import { LoginAwareComponent } from '../LoginAwareComponent';
 import { UserService } from '../user.service';
 import { BsModalService } from 'ngx-bootstrap';
 import { ArtistModalComponent } from '../artist-modal/artist-modal.component';
@@ -17,7 +17,7 @@ export class ArtistsComponent extends LoginAwareComponent {
 
   constructor(
     private albumService: AlbumService,
-    userService: UserService,
+    protected userService: UserService,
     private bsModalService: BsModalService
   ) {
     super(userService);

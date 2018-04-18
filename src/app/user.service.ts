@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  doLogin(credentials) {
+  doLogin(credentials) : void {
     let hashedCredentials = btoa(
       `${credentials.username}:${credentials.password}`
     );
@@ -23,7 +23,7 @@ export class UserService {
       Authorization: `Basic ${hashedCredentials}`
     });
 
-    return this.http
+    this.http
       .post<UserInfo>(url('user'), {}, { headers })
       .pipe(catchError(handleError))
       .subscribe(value => {
@@ -38,14 +38,14 @@ export class UserService {
       });
   }
 
-  doLogout() {
+  doLogout() : void{
     const loggedOutUser: UserInfo = {
       userName: '',
       isAdmin: false,
       authenticated: false
     };
-    return this.http
-      .post<UserInfo>(url('logout'), {})
+    this.http
+      .post<any>(url('logout'), {})
       .pipe(catchError(handleError))
       .subscribe(() => this.userInfoSource.next(loggedOutUser));
   }
