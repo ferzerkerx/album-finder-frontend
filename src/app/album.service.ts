@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Album } from './Album';
 import { Artist } from './Artist';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { parseResponse, url } from './service.util';
+import { checkForErrors, parseResponse, url } from './service.util';
 
 @Injectable()
 export class AlbumService {
@@ -19,15 +19,12 @@ export class AlbumService {
   deleteArtist(id: number): Promise<number> {
     return this.http
       .delete<number>(url(`admin/artist/${id}`))
-      .let(parseResponse)
+      .let(checkForErrors)
       .toPromise();
   }
 
-  deleteAlbum(id: number): Promise<number> {
-    return this.http
-      .delete<number>(url(`admin/album/${id}`))
-      .let(parseResponse)
-      .toPromise();
+  deleteAlbum(id: number): Observable<any> {
+    return this.http.delete<any>(url(`admin/album/${id}`)).let(checkForErrors);
   }
 
   listAlbumsByCriteria(searchCriteria: {

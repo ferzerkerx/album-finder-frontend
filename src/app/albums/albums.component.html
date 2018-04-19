@@ -2,7 +2,7 @@
 
   <span>Search:</span>
 
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form #myForm="ngForm" (ngSubmit)="searchAlbums(myForm)">
     <div class="form-group">
       <label for="searchName">Title:</label>
       <input type="text" class="form-control" id="searchName" name="searchName" ngModel/>
@@ -16,15 +16,14 @@
     <button class="btn btn-info" (click)="createAlbum()">Create</button>
   </div>
 
-  <div *ngIf="resultAlbums && resultAlbums.length > 0">
-    Results filter: <input name="resultsFilter"/>
+  <div *ngIf="foundAlbums && foundAlbums.length > 0">
+    Results filter: <input [(ngModel)]="searchFilter" #ctrl="ngModel" (keyup)="filterResults()"/>
 
     <table>
       <th>Title</th>
       <th>Year</th>
       <th>Name</th>
-      <!--TODO filter-->
-      <tr *ngFor="let album of resultAlbums">
+      <tr *ngFor="let album of filteredAlbums">
         <td>{{album.title}}</td>
         <td>{{album.year}}</td>
         <td>{{album.artist.name}}</td>
