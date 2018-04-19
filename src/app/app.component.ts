@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { BsModalService } from 'ngx-bootstrap';
-import {UserService} from "./user.service";
-import {LoginAwareComponent} from "./LoginAwareComponent";
+import { UserService } from './user.service';
+import { UserInfoAwareComponent } from './UserInfoAwareComponent';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent extends LoginAwareComponent {
+export class AppComponent extends UserInfoAwareComponent {
   title = 'app';
 
-  constructor(private modalService: BsModalService, protected userService: UserService) {
+  constructor(
+    private modalService: BsModalService,
+    protected userService: UserService
+  ) {
     super(userService);
   }
 

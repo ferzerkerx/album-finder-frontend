@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  doLogin(credentials) : void {
+  doLogin(credentials): void {
     let hashedCredentials = btoa(
       `${credentials.username}:${credentials.password}`
     );
@@ -38,7 +38,7 @@ export class UserService {
       });
   }
 
-  doLogout() : void{
+  doLogout(): void {
     const loggedOutUser: UserInfo = {
       userName: '',
       isAdmin: false,

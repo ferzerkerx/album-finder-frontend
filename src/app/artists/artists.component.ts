@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlbumService } from '../album.service';
 import { Artist } from '../Artist';
-import { LoginAwareComponent } from '../LoginAwareComponent';
+import { UserInfoAwareComponent } from '../UserInfoAwareComponent';
 import { UserService } from '../user.service';
 import { BsModalService } from 'ngx-bootstrap';
 import { ArtistModalComponent } from '../artist-modal/artist-modal.component';
@@ -12,7 +12,7 @@ import { ArtistModalComponent } from '../artist-modal/artist-modal.component';
   templateUrl: './artists.component.html',
   styleUrls: ['./artists.component.css']
 })
-export class ArtistsComponent extends LoginAwareComponent {
+export class ArtistsComponent extends UserInfoAwareComponent {
   resultArtist$: Artist[];
 
   constructor(

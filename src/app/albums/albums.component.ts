@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Album } from '../Album';
 import { AlbumService } from '../album.service';
 import { NgForm } from '@angular/forms';
-import { LoginAwareComponent } from '../LoginAwareComponent';
+import { UserInfoAwareComponent } from '../UserInfoAwareComponent';
 import { UserService } from '../user.service';
 import { BsModalService } from 'ngx-bootstrap';
 import { AlbumModalComponent } from '../album-modal/album-modal.component';
@@ -12,7 +12,7 @@ import { AlbumModalComponent } from '../album-modal/album-modal.component';
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.css']
 })
-export class AlbumsComponent extends LoginAwareComponent {
+export class AlbumsComponent extends UserInfoAwareComponent {
   resultAlbums: Album[];
 
   constructor(
@@ -26,7 +26,14 @@ export class AlbumsComponent extends LoginAwareComponent {
   createAlbum() {
     let album: Album = new Album();
     const initialState = { album: album };
-    this.bsModalService.show(AlbumModalComponent, { initialState });
+    const bsModalRef = this.bsModalService.show(AlbumModalComponent, {
+      initialState
+    });
+    bsModalRef.content.onSave.subscribe(result => {
+      if (result) {
+        console.log('reloading listed albums');
+      }
+    });
   }
 
   editAlbum(selectedAlbum: Album) {

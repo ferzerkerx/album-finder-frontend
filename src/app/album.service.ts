@@ -58,18 +58,16 @@ export class AlbumService {
     }
   }
 
-  saveAlbum(album: Album): Promise<number> {
+  saveAlbum(album: Album): Observable<Album> {
     const isExistingAlbum: boolean = album.id && album.id > 0;
     if (isExistingAlbum) {
       return this.http
-        .put<number>(url(`admin/album/${album.id}`), album)
-        .let(parseResponse)
-        .toPromise();
+        .put<Album>(url(`admin/album/${album.id}`), album)
+        .let(parseResponse);
     } else {
       return this.http
-        .post<number>(url(`/admin/artist/${album.artist.id}/album`), album)
-        .let(parseResponse)
-        .toPromise();
+        .post<Album>(url(`/admin/artist/${album.artist.id}/album`), album)
+        .let(parseResponse);
     }
   }
 }
