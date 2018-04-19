@@ -1,6 +1,6 @@
 <div class="grid grid-pad">
 
-  <form #myForm="ngForm" (ngSubmit)="searchArtists(myForm)">
+  <form #searchForm="ngForm" (ngSubmit)="searchArtists(searchForm)">
     <div class="form-group">
       <label for="searchName">Name:</label>
       <input type="text" class="form-control" id="searchName" name="searchName" ngModel required/>

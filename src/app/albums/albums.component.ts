@@ -16,7 +16,7 @@ export class AlbumsComponent extends UserInfoAwareComponent {
   foundAlbums: Album[];
   filteredAlbums: Album[];
   searchFilter: string;
-  @ViewChild('myForm') myForm: NgForm;
+  @ViewChild('searchForm') searchForm: NgForm;
 
   constructor(
     private albumService: AlbumService,
@@ -70,7 +70,7 @@ export class AlbumsComponent extends UserInfoAwareComponent {
   }
 
   private refreshResults() {
-    this.searchAlbums(this.myForm);
+    this.searchAlbums(this.searchForm);
   }
 
   private showModal(initialState) {

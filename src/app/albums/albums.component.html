@@ -2,7 +2,7 @@
 
   <span>Search:</span>
 
-  <form #myForm="ngForm" (ngSubmit)="searchAlbums(myForm)">
+  <form #searchForm="ngForm" (ngSubmit)="searchAlbums(searchForm)">
     <div class="form-group">
       <label for="searchName">Title:</label>
       <input type="text" class="form-control" id="searchName" name="searchName" ngModel/>
