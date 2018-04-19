@@ -29,27 +29,13 @@ export class AlbumsComponent extends UserInfoAwareComponent {
   createAlbum() {
     const album: Album = new Album();
     const initialState = { album: album };
-    const bsModalRef = this.bsModalService.show(AlbumModalComponent, {
-      initialState
-    });
-    bsModalRef.content.onSave.subscribe(wasSaved => {
-      if (wasSaved) {
-        this.refreshResults();
-      }
-    });
+    this.showModal(initialState);
   }
 
   editAlbum(selectedAlbum: Album) {
     const album: Album = { ...selectedAlbum };
     const initialState = { album: album };
-    const bsModalRef = this.bsModalService.show(AlbumModalComponent, {
-      initialState
-    });
-    bsModalRef.content.onSave.subscribe(wasSaved => {
-      if (wasSaved) {
-        this.refreshResults();
-      }
-    });
+    this.showModal(initialState);
   }
 
   searchAlbums(f: NgForm) {
@@ -77,13 +63,24 @@ export class AlbumsComponent extends UserInfoAwareComponent {
   filterResults() {
     this.filteredAlbums = this.foundAlbums;
     if (this.searchFilter && this.searchFilter.length > 0) {
-      this.filteredAlbums = this.foundAlbums.filter(e =>
-        e.title.includes(this.searchFilter)
+      this.filteredAlbums = this.foundAlbums.filter(item =>
+        item.title.includes(this.searchFilter)
       );
     }
   }
 
   private refreshResults() {
     this.searchAlbums(this.myForm);
+  }
+
+  private showModal(initialState) {
+    const bsModalRef = this.bsModalService.show(AlbumModalComponent, {
+      initialState
+    });
+    bsModalRef.content.onSave.subscribe(wasSaved => {
+      if (wasSaved) {
+        this.refreshResults();
+      }
+    });
   }
 }

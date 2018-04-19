@@ -16,11 +16,8 @@ export class AlbumService {
       .let(parseResponse);
   }
 
-  deleteArtist(id: number): Promise<number> {
-    return this.http
-      .delete<number>(url(`admin/artist/${id}`))
-      .let(checkForErrors)
-      .toPromise();
+  deleteArtist(id: number): Observable<any> {
+    return this.http.delete<any>(url(`admin/artist/${id}`)).let(checkForErrors);
   }
 
   deleteAlbum(id: number): Observable<any> {
@@ -40,18 +37,16 @@ export class AlbumService {
       .let(parseResponse);
   }
 
-  saveArtist(artist: Artist): Promise<number> {
+  saveArtist(artist: Artist): Observable<Artist> {
     const isExistingArtist: boolean = artist.id && artist.id > 0;
     if (isExistingArtist) {
       return this.http
         .put<number>(url(`admin/artist/${artist.id}`), artist)
-        .let(parseResponse)
-        .toPromise();
+        .let(parseResponse);
     } else {
       return this.http
         .post<number>(url(`admin/artist`), artist)
-        .let(parseResponse)
-        .toPromise();
+        .let(parseResponse);
     }
   }
 

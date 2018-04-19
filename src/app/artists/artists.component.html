@@ -1,6 +1,6 @@
 <div class="grid grid-pad">
 
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form #myForm="ngForm" (ngSubmit)="searchArtists(myForm)">
     <div class="form-group">
       <label for="searchName">Name:</label>
       <input type="text" class="form-control" id="searchName" name="searchName" ngModel required/>
@@ -13,12 +13,11 @@
     <button class="btn btn-info" (click)="createArtist()">Create</button>
   </div>
 
-  <div *ngIf="resultArtist$ && resultArtist$.length > 0">
-    Results filter: <input name="resultsFilter"/>
+  <div *ngIf="foundArtists && foundArtists.length > 0">
+    Results filter: <input name="resultsFilter" [(ngModel)]="searchFilter" #ctrl="ngModel" (keyup)="filterResults()"/>
     <table>
       <th>Name</th>
-      <!--TODO filter-->
-      <tr *ngFor="let artist of resultArtist$">
+      <tr *ngFor="let artist of filteredArtists">
         <td>{{artist.name}}</td>
         <td></td>
         <span *ngIf="userInfo.isAdmin">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlbumService } from '../album.service';
 import { Artist } from '../Artist';
@@ -13,7 +13,10 @@ import { ArtistModalComponent } from '../artist-modal/artist-modal.component';
   styleUrls: ['./artists.component.css']
 })
 export class ArtistsComponent extends UserInfoAwareComponent {
-  resultArtist$: Artist[];
+  foundArtists: Artist[];
+  filteredArtists: Artist[];
+  searchFilter: string;
+  @ViewChild('myForm') myForm: NgForm;
 
   constructor(
     private albumService: AlbumService,
@@ -23,22 +26,25 @@ export class ArtistsComponent extends UserInfoAwareComponent {
     super(userService);
   }
 
-  onSubmit(f: NgForm) {
+  searchArtists(f: NgForm) {
     this.albumService
       .listArtistByName(f.value.searchName)
-      .subscribe(artists => (this.resultArtist$ = artists));
+      .subscribe(artists => {
+        this.foundArtists = artists;
+        this.filterResults();
+      });
   }
 
   createArtist() {
     const artist: Artist = new Artist();
-    const initialState = { artist: artist };
-    this.bsModalService.show(ArtistModalComponent, { initialState });
+    const initialState = { artist };
+    this.showModal(initialState);
   }
 
   editArtist(selectedArtist: Artist) {
     const artist: Artist = { ...selectedArtist };
-    const initialState = { artist: artist };
-    this.bsModalService.show(ArtistModalComponent, { initialState });
+    const initialState = { artist };
+    this.showModal(initialState);
   }
 
   deleteArtist(artist: Artist) {
@@ -46,9 +52,33 @@ export class ArtistsComponent extends UserInfoAwareComponent {
       `Are you sure you want to delete: ${artist.name} ?`
     );
     if (shouldDeleteArtist) {
-      this.albumService.deleteArtist(artist.id).then(() => {
-        // TODO $route.reload();
+      this.albumService.deleteArtist(artist.id).subscribe(() => {
+        this.refreshResults();
       });
     }
+  }
+
+  filterResults() {
+    this.filteredArtists = this.foundArtists;
+    if (this.searchFilter && this.searchFilter.length > 0) {
+      this.filteredArtists = this.foundArtists.filter(item =>
+        item.name.includes(this.searchFilter)
+      );
+    }
+  }
+
+  private refreshResults() {
+    this.searchArtists(this.myForm);
+  }
+
+  private showModal(initialState) {
+    const bsModalRef = this.bsModalService.show(ArtistModalComponent, {
+      initialState
+    });
+    bsModalRef.content.onSave.subscribe(wasSaved => {
+      if (wasSaved) {
+        this.refreshResults();
+      }
+    });
   }
 }
