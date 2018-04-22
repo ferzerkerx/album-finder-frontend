@@ -1,21 +1,19 @@
-<div>
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Artist</h4>
-        <button type="button" class="close" (click)="close()">&times;</button>
-      </div>
-      <form #f="ngForm" (ngSubmit)="save(f)">
-        <div class="form-group" >
-          <input-field name="name"
-                       label="Name"
-                       errorMessage="Name is required"
-                       [(ngModel)] = "artist.name"
-                       required>
-          </input-field>
-        </div>
-        <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
-      </form>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Artist</h4>
+      <button type="button" class="close" (click)="close()">&times;</button>
     </div>
+    <form #f="ngForm" (ngSubmit)="save(f)">
+      <div class="form-group" >
+        <input-field name="name"
+                     label="Name"
+                     errorMessage="Name is required"
+                     [(ngModel)] = "artist.name"
+                     required>
+        </input-field>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
+    </form>
   </div>
 </div>

@@ -1,36 +1,34 @@
-<div id="albumModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Album</h4>
-        <button type="button" class="close" (click)="close()">&times;</button>
-      </div>
-      <form #f="ngForm" (ngSubmit)="save(f)">
-        <div class="form-group" >
-          <input-field name="title"
-                       label="Title"
-                       errorMessage="Title is required"
-                       [(ngModel)] = "album.title"
-                       required>
-          </input-field>
-        </div>
-
-        <div class="form-group" >
-          <input-field name="year"
-                       label="Year"
-                       pattern="[1-9]\d{3}"
-                       errorMessage="Year is required"
-                       [(ngModel)] = "album.year"
-                       required>
-          </input-field>
-        </div>
-
-        <div class="form-group">
-          <label for="artist">Artist:</label>
-          <input type="text" class="form-control" id="artist" name="artist" [(ngModel)] = "album.artist.name" readonly/>
-        </div>
-        <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
-      </form>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Album</h4>
+      <button type="button" class="close" (click)="close()">&times;</button>
     </div>
+    <form #f="ngForm" (ngSubmit)="save(f)">
+      <div class="form-group" >
+        <input-field name="title"
+                     label="Title"
+                     errorMessage="Title is required"
+                     [(ngModel)] = "album.title"
+                     required>
+        </input-field>
+      </div>
+
+      <div class="form-group" >
+        <input-field name="year"
+                     label="Year"
+                     pattern="[1-9]\d{3}"
+                     errorMessage="Year is required"
+                     [(ngModel)] = "album.year"
+                     required>
+        </input-field>
+      </div>
+
+      <div class="form-group">
+        <label for="artist">Artist:</label>
+        <input type="text" class="form-control" id="artist" name="artist" [(ngModel)] = "album.artist.name" readonly/>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
+    </form>
   </div>
 </div>
