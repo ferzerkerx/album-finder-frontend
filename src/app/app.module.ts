@@ -24,6 +24,7 @@ import { ArtistModalComponent } from './artist-modal/artist-modal.component';
 import { AlbumModalComponent } from './album-modal/album-modal.component';
 import { HttpXsrfInterceptor } from './HttpxrsfInterceptor';
 import { InputComponent } from './input/input.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { InputComponent } from './input/input.component';
     LoginModalComponent,
     ArtistModalComponent,
     AlbumModalComponent,
-    InputComponent
+    InputComponent,
+    ModalComponent
   ],
   entryComponents: [
     LoginModalComponent,
