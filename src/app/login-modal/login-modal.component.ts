@@ -21,6 +21,10 @@ export class LoginModalComponent {
       password: f.value.password
     };
     this.userService.doLogin(credentials);
+    this.close();
+  }
+
+  close() {
     this.bsModalRef.hide();
   }
 }

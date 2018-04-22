@@ -19,6 +19,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() name: string;
   @Input() errorMessage: string;
   @Input() label: string;
+  @Input() pattern: string = '';
   @Input() required: boolean = false;
   private innerValue: any = '';
 

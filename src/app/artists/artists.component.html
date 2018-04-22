@@ -14,7 +14,7 @@
   </div>
 
   <div *ngIf="foundArtists && foundArtists.length > 0">
-    Results filter: <input name="resultsFilter" [(ngModel)]="searchFilter" #ctrl="ngModel" (keyup)="filterResults()"/>
+    Results filter: <input name="resultsFilter" [(ngModel)]="searchFilter" (keyup)="filterResults()"/>
     <table>
       <th>Name</th>
       <tr *ngFor="let artist of filteredArtists">

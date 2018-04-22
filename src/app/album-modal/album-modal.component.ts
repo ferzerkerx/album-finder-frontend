@@ -19,6 +19,10 @@ export class AlbumModalComponent implements OnInit {
     public bsModalRef: BsModalRef
   ) {}
 
+  public ngOnInit(): void {
+    this.onSave = new Subject();
+  }
+
   save(f: NgForm) {
     if (!this.album.id) {
       this.album.artist = { id: 1, name: 'MOONSORROW' }; //TODO this needs to be selected in the modal
@@ -32,14 +36,14 @@ export class AlbumModalComponent implements OnInit {
     };
     this.albumService.saveAlbum(data).subscribe(
       () => {
-        this.bsModalRef.hide();
+        this.close();
         this.onSave.next(true);
       },
       () => this.onSave.next(false)
     );
   }
 
-  public ngOnInit(): void {
-    this.onSave = new Subject();
+  close() {
+    this.bsModalRef.hide();
   }
 }

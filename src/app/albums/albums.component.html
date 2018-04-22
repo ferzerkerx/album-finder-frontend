@@ -17,7 +17,7 @@
   </div>
 
   <div *ngIf="foundAlbums && foundAlbums.length > 0">
-    Results filter: <input [(ngModel)]="searchFilter" #ctrl="ngModel" (keyup)="filterResults()"/>
+    Results filter: <input [(ngModel)]="searchFilter" (keyup)="filterResults()"/>
 
     <table>
       <th>Title</th>

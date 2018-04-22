@@ -19,6 +19,10 @@ export class ArtistModalComponent implements OnInit {
     public bsModalRef: BsModalRef
   ) {}
 
+  ngOnInit(): void {
+    this.onSave = new Subject();
+  }
+
   save(f: NgForm) {
     const data: Artist = {
       id: this.artist.id,
@@ -26,14 +30,14 @@ export class ArtistModalComponent implements OnInit {
     };
     this.albumService.saveArtist(data).subscribe(
       () => {
-        this.bsModalRef.hide();
+        this.close();
         this.onSave.next(true);
       },
       () => this.onSave.next(false)
     );
   }
 
-  ngOnInit(): void {
-    this.onSave = new Subject();
+  close() {
+    this.bsModalRef.hide();
   }
 }

@@ -1,6 +1,6 @@
 <span>
   <label [for]="name">{{label}}:</label>
-  <input type="text" class="form-control" [id]="name" [name]="name" [(ngModel)]="value" #field="ngModel" [required]="required"/>
+  <input type="text" class="form-control" [id]="name" [name]="name" [(ngModel)]="value" #field="ngModel" [required]="required" [pattern]="pattern ? pattern : null"/>
   <div [hidden]="field.valid || field.pristine"
        class="alert alert-danger">
     {{errorMessage}}
