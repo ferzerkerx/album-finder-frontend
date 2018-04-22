@@ -4,10 +4,15 @@
 
   <form #searchForm="ngForm" (ngSubmit)="searchAlbums(searchForm)">
     <div class="form-group">
-      <label for="searchName">Title:</label>
-      <input type="text" class="form-control" id="searchName" name="searchName" ngModel/>
-      <label for="searchYear">Year:</label>
-      <input type="text" class="form-control" id="searchYear" name="searchYear" ngModel/>
+      <input-field name="searchName"
+                   label="Title"
+                   ngModel>
+      </input-field>
+      <input-field name="searchYear"
+                   label="Year"
+                   pattern="[1-9]\d{3}"
+                   ngModel>
+      </input-field>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

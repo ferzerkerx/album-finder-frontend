@@ -2,10 +2,13 @@
 
   <form #searchForm="ngForm" (ngSubmit)="searchArtists(searchForm)">
     <div class="form-group">
-      <label for="searchName">Name:</label>
-      <input type="text" class="form-control" id="searchName" name="searchName" ngModel required/>
+      <input-field name="searchName"
+                   label="Name"
+                   errorMessage="username is required"
+                   ngModel
+                   required>
+      </input-field>
     </div>
-
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
