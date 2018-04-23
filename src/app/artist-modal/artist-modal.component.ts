@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Artist } from '../Artist';
 import { BsModalRef } from 'ngx-bootstrap';
 import { NgForm } from '@angular/forms';
 import { AlbumService } from '../album.service';
-import { Subject } from 'rxjs/Subject';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
