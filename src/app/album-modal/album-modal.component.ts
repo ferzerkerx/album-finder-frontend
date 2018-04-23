@@ -1,26 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Album } from '../Album';
 import { AlbumService } from '../album.service';
 import { BsModalRef } from 'ngx-bootstrap';
 import { NgForm } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-album-modal',
   templateUrl: './album-modal.component.html',
   styleUrls: ['./album-modal.component.css']
 })
-export class AlbumModalComponent implements OnInit {
+export class AlbumModalComponent extends ModalComponent {
   album: Album;
-  public onSave: Subject<boolean>;
 
   constructor(
     private albumService: AlbumService,
     public bsModalRef: BsModalRef
-  ) {}
-
-  public ngOnInit(): void {
-    this.onSave = new Subject();
+  ) {
+    super(bsModalRef);
   }
 
   save(f: NgForm) {
@@ -34,16 +31,8 @@ export class AlbumModalComponent implements OnInit {
       title: f.value.title,
       artist: this.album.artist
     };
-    this.albumService.saveAlbum(data).subscribe(
-      () => {
-        this.close();
-        this.onSave.next(true);
-      },
-      () => this.onSave.next(false)
-    );
-  }
-
-  close() {
-    this.bsModalRef.hide();
+    this.albumService
+      .saveAlbum(data)
+      .subscribe(() => this.onSuccess(), () => this.onFailure());
   }
 }

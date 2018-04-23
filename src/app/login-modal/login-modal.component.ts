@@ -3,17 +3,17 @@ import { NgForm } from '@angular/forms';
 
 import { UserService } from '../user.service';
 import { BsModalRef } from 'ngx-bootstrap';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginModalComponent {
-  constructor(
-    private userService: UserService,
-    public bsModalRef: BsModalRef
-  ) {}
+export class LoginModalComponent extends ModalComponent {
+  constructor(private userService: UserService, public bsModalRef: BsModalRef) {
+    super(bsModalRef);
+  }
 
   login(f: NgForm) {
     const credentials = {
@@ -22,9 +22,5 @@ export class LoginModalComponent {
     };
     this.userService.doLogin(credentials);
     this.close();
-  }
-
-  close() {
-    this.bsModalRef.hide();
   }
 }

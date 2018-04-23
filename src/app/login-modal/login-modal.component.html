@@ -1,11 +1,4 @@
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Login</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+<app-modal title="Login">
     <form #f="ngForm" (ngSubmit)="login(f)">
       <div class="form-group">
         <input-field name="username"
@@ -25,5 +18,4 @@
       </div>
       <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
     </form>
-  </div>
-</div>
+</app-modal>
