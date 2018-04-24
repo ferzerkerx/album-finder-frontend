@@ -4,7 +4,7 @@ import { AlbumService } from '../album.service';
 import { BsModalRef } from 'ngx-bootstrap';
 import { NgForm } from '@angular/forms';
 import { ModalComponent } from '../modal/modal.component';
-import {Artist} from "../Artist";
+import { Artist } from '../Artist';
 
 @Component({
   selector: 'app-album-modal',
@@ -25,8 +25,8 @@ export class AlbumModalComponent extends ModalComponent {
   ngOnInit() {
     super.ngOnInit();
     this.albumService
-      .listArtistByName("")
-      .subscribe((artists) => this.allArtists =  artists);
+      .listArtistByName('')
+      .subscribe(artists => (this.allArtists = artists));
   }
 
   save(f: NgForm) {

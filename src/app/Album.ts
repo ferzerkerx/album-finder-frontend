@@ -6,7 +6,12 @@ export class Album {
   id?: number;
   artist?: Artist;
 
-  constructor(param?: { year: string; title: string; artist: Artist; id: number | undefined }) {
+  constructor(param?: {
+    year: string;
+    title: string;
+    artist: Artist;
+    id: number | undefined;
+  }) {
     if (param) {
       this.year = param.year;
       this.title = param.title;
@@ -15,11 +20,11 @@ export class Album {
     }
   }
 
-  get isExisting():boolean {
+  get isExisting(): boolean {
     return this.id && this.id > 0;
   }
 
-  get isNew():boolean {
+  get isNew(): boolean {
     return !this.isExisting;
   }
 }
