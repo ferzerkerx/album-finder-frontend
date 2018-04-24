@@ -28,13 +28,13 @@ export class AlbumsComponent extends UserInfoAwareComponent {
 
   createAlbum() {
     const album: Album = new Album();
-    const initialState = { album: album };
+    const initialState = { album };
     this.showModal(initialState);
   }
 
   editAlbum(selectedAlbum: Album) {
     const album: Album = { ...selectedAlbum };
-    const initialState = { album: album };
+    const initialState = { album };
     this.showModal(initialState);
   }
 

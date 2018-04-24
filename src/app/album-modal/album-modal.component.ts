@@ -4,6 +4,7 @@ import { AlbumService } from '../album.service';
 import { BsModalRef } from 'ngx-bootstrap';
 import { NgForm } from '@angular/forms';
 import { ModalComponent } from '../modal/modal.component';
+import {Artist} from "../Artist";
 
 @Component({
   selector: 'app-album-modal',
@@ -12,6 +13,7 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class AlbumModalComponent extends ModalComponent {
   album: Album;
+  allArtists: Artist[];
 
   constructor(
     private albumService: AlbumService,
@@ -20,17 +22,21 @@ export class AlbumModalComponent extends ModalComponent {
     super(bsModalRef);
   }
 
-  save(f: NgForm) {
-    if (!this.album.id) {
-      this.album.artist = { id: 1, name: 'MOONSORROW' }; //TODO this needs to be selected in the modal
-    }
+  ngOnInit() {
+    super.ngOnInit();
+    this.albumService
+      .listArtistByName("")
+      .subscribe((artists) => this.allArtists =  artists);
+  }
 
-    const data: Album = {
-      id: this.album.id,
+  save(f: NgForm) {
+    const data: Album = new Album({
       year: f.value.year,
       title: f.value.title,
-      artist: this.album.artist
-    };
+      artist: this.album.artist,
+      id: this.album.id
+    });
+
     this.albumService
       .saveAlbum(data)
       .subscribe(() => this.onSuccess(), () => this.onFailure());

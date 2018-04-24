@@ -19,8 +19,13 @@
     </div>
     <div class="form-group">
       <label for="artist">Artist:</label>
-      <input type="text" class="form-control" id="artist" name="artist" [(ngModel)]="album.artist.name" readonly/>
+      <input *ngIf="!album.isNew" type="text" class="form-control" id="artist" [value]="album.artist.name" readonly/>
+
+      <select *ngIf="album.isNew" class="form-control" name="artist" id="artist" [(ngModel)]="album.artist" required>
+        <option *ngFor="let albumArtist of allArtists" [ngValue]="albumArtist">{{albumArtist.name}}</option>
+      </select>
     </div>
+
     <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
   </form>
 </app-modal>
