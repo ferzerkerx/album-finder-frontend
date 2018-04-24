@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArtistModalComponent } from './create-artist-modal.component';
+import { ArtistModalComponent } from './artist-modal.component';
 
 describe('CreateArtistModalComponent', () => {
   let component: ArtistModalComponent;
