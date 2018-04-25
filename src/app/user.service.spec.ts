@@ -1,18 +1,20 @@
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {HttpClient} from "@angular/common/http";
-import {TestBed} from "@angular/core/testing";
-import {UserService} from "./user.service";
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
+import { UserService } from './user.service';
 
-describe('UserServiceService', () => {
-
+describe('UserService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let userService: UserService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      providers: [ UserService ]
+      imports: [HttpClientTestingModule],
+      providers: [UserService]
     });
 
     httpClient = TestBed.get(HttpClient);
@@ -25,9 +27,8 @@ describe('UserServiceService', () => {
   });
 
   describe('#Login', () => {
-
     it('should include authorization headers', () => {
-      const credentials = {username: 'user', password: 'secret'};
+      const credentials = { username: 'user', password: 'secret' };
       userService.userInfo$.subscribe(userInfo => {
         expect(userInfo.authenticated).toBeTruthy();
       });
@@ -40,15 +41,18 @@ describe('UserServiceService', () => {
       const req = httpTestingController.expectOne('http://localhost:8080/user');
       expect(req.request.method).toEqual('POST');
 
-      expect(req.request.headers.get('Authorization')).toEqual(`Basic ${hashedCredentials}`);
+      expect(req.request.headers.get('Authorization')).toEqual(
+        `Basic ${hashedCredentials}`
+      );
 
-      req.flush({username: 'user', authorities: [{authority: 'ROLE_ADMIN'}]});
+      req.flush({
+        username: 'user',
+        authorities: [{ authority: 'ROLE_ADMIN' }]
+      });
     });
   });
 
-
   describe('#Logout', () => {
-
     it('should logout user', () => {
       userService.userInfo$.subscribe(userInfo => {
         expect(userInfo.authenticated).toBeFalsy();
@@ -56,11 +60,12 @@ describe('UserServiceService', () => {
 
       userService.doLogout();
 
-      const req = httpTestingController.expectOne('http://localhost:8080/logout');
+      const req = httpTestingController.expectOne(
+        'http://localhost:8080/logout'
+      );
       expect(req.request.method).toEqual('POST');
 
       req.flush({});
     });
   });
-
 });
