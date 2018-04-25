@@ -29,13 +29,17 @@ export class UserService {
       .subscribe(value => {
         const userInfo: UserInfo = {
           userName: value.username,
-          isAdmin: value.authorities
-            .map(e => e.authority)
-            .includes('ROLE_ADMIN'),
+          isAdmin: UserService.hasAdminAuthority(value),
           authenticated: true
         };
         this.userInfoSource.next(userInfo);
       });
+  }
+
+  private static hasAdminAuthority(value) {
+    return value.authorities && value.authorities
+      .map(e => e.authority)
+      .includes('ROLE_ADMIN');
   }
 
   doLogout(): void {
