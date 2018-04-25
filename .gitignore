@@ -2,3 +2,6 @@
 
 node_modules/
 build/
+.scannerwork/
+coverage/
+dist/

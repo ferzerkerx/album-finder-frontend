@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http/testing';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Artist } from './Artist';
+import {Album} from "./Album";
 
 describe('AlbumService', () => {
   let httpClient: HttpClient;
@@ -54,4 +55,32 @@ describe('AlbumService', () => {
       req.flush(expectedArtists);
     });
   });
+
+  describe('#listAlbumsByCriteria', () => {
+    let expectedAlbums: Album[];
+
+    beforeEach(() => {
+      albumService = TestBed.get(AlbumService);
+      expectedAlbums = [
+        { id: 1, title: 'A', year:'2014', artist: new Artist() },
+        { id: 2, title: 'B', year: '2018', artist: new Artist() }
+      ] as Album[];
+    });
+
+    it('should list artistByName', () => {
+      albumService.listAlbumsByCriteria({title: 'someTitle', year: '2020'}).subscribe(albums => {
+        expect(albums).toEqual(expectedAlbums);
+      });
+
+      const req = httpTestingController.expectOne(
+        (req: HttpRequest<any>) =>
+          req.method === 'GET' &&
+          req.url === 'http://localhost:8080/albums/search'
+      );
+      expect(req.request.params.get('title')).toEqual('someTitle');
+      expect(req.request.params.get('year')).toEqual('2020');
+
+      req.flush(expectedAlbums);
+    });
+  })
 });
