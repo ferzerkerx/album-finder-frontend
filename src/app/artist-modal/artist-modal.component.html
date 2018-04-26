@@ -1,0 +1,13 @@
+<app-modal title="Artist">
+  <form #f="ngForm" (ngSubmit)="save(f)">
+    <div class="form-group" >
+      <input-field name="name"
+                   label="Name"
+                   errorMessage="Name is required"
+                   [(ngModel)] = "artist.name"
+                   required>
+      </input-field>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
+  </form>
+</app-modal>

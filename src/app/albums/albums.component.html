@@ -1,0 +1,47 @@
+<div class="grid grid-pad">
+
+  <span>Search:</span>
+
+  <form #searchForm="ngForm" (ngSubmit)="searchAlbums(searchForm)">
+    <div class="form-group">
+      <input-field name="searchName"
+                   label="Title"
+                   ngModel>
+      </input-field>
+      <input-field name="searchYear"
+                   label="Year"
+                   pattern="[1-9]\d{3}"
+                   ngModel>
+      </input-field>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div *ngIf="userInfo.isAdmin">
+    <button class="btn btn-info" (click)="createAlbum()">Create</button>
+  </div>
+
+  <div *ngIf="foundAlbums && foundAlbums.length > 0">
+    Results filter: <input [(ngModel)]="searchFilter" (keyup)="filterResults()"/>
+
+    <table>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Name</th>
+      <tr *ngFor="let album of filteredAlbums">
+        <td>{{album.title}}</td>
+        <td>{{album.year}}</td>
+        <td>{{album.artist.name}}</td>
+        <td></td>
+        <span *ngIf="userInfo.isAdmin">
+          <td>
+          <button class="btn btn-info" (click)="editAlbum(album)">edit</button>
+        </td>
+        <td>
+          <button class="btn btn-warning" (click)="deleteAlbum(album)">delete</button>
+        </td>
+        </span>
+      </tr>
+    </table>
+  </div>
+</div>

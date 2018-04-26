@@ -1,0 +1,21 @@
+<app-modal title="Login">
+    <form #f="ngForm" (ngSubmit)="login(f)">
+      <div class="form-group">
+        <input-field name="username"
+                     label="Username"
+                     errorMessage="username is required"
+                     ngModel
+                     required>
+        </input-field>
+      </div>
+      <div class="form-group">
+        <input-field name="password"
+                     label="Password"
+                     errorMessage="password is required"
+                     ngModel
+                     required>
+        </input-field>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
+    </form>
+</app-modal>

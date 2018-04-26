@@ -1,0 +1,36 @@
+<div class="grid grid-pad">
+
+  <form #searchForm="ngForm" (ngSubmit)="searchArtists(searchForm)">
+    <div class="form-group">
+      <input-field name="searchName"
+                   label="Name"
+                   ngModel>
+      </input-field>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div *ngIf="userInfo.isAdmin">
+    <button class="btn btn-info" (click)="createArtist()">Create</button>
+  </div>
+
+  <div *ngIf="foundArtists && foundArtists.length > 0">
+    Results filter: <input name="resultsFilter" [(ngModel)]="searchFilter" (keyup)="filterResults()"/>
+    <table>
+      <th>Name</th>
+      <tr *ngFor="let artist of filteredArtists">
+        <td>{{artist.name}}</td>
+        <td></td>
+        <span *ngIf="userInfo.isAdmin">
+          <td>
+            <button class="btn btn-info" (click)="editArtist(artist)">edit</button>
+          </td>
+          <td>
+            <button class="btn btn-warning" (click)="deleteArtist(artist)">delete</button>
+          </td>
+        </span>
+      </tr>
+    </table>
+  </div>
+
+</div>

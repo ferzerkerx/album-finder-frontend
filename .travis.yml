@@ -1,7 +1,7 @@
-language: java
-jdk:
-  - oraclejdk8
-  
+language: node_js
+node_js:
+  - "lts/*"
+
 addons:
   sonarcloud:
     organization: "ferzerkerx-github"
@@ -10,11 +10,17 @@ addons:
 env:
   secure: "Uyr3CCX/MAYx07zw8jYPNL97oMPxdiUQcY5PZeL76ocqd64mhnxQV0VhQ0MtS98tsKXWWYFrc4nuE77SOuFxszq3cM2ZwzlZ4eYnMUB9scEQpVudBb2cdDU3a66DWOAplLUqszujIAAqPgJY9Vu1UND02VOqJKNCNpOnDBwDRkWcViEQoUBnHXHepyRSch8ajLS6DplMZ88stTV0oD0ovpawqu3a/nz+qyDR8cON1r+gp9o+/CX7usH484joV9K6dZG6VOWx4utlnWD56fbirlk0fKbMq9Erf9+aobm3OS+x0N9QZONFf7keOVmWkV8PkUvqNmbFSv2Jok5ifM9IusOEKD/3ma8vxB06jZScvdEN3Ws1euPi1aM5O/pUPEE8zN7FxypAJf4ZpAYkbS+zVoPceHkMqatfozA6LuEKLkb3hhn5QTl01+3hWQACp8cwRmuoR0XHxhUvNk8ASTecqELsyWdXt5SaEMT4Bbc1NdN27i7joUl3Nxkjkwk3zaLSwGNlI7a/DvZ40TfJ8fOOgPPeT2tTWwK8NWrLznVM6ecgI1rhOSfsKGlqHniTc5/IS2f1wCSOX9EutIj6z0esyZCiLgxzBE5qwkmOMJ3ILJjqIUTkqanxkYbLawkr/vEHBu3NupU1My/aZasoNgEMCi34alzb+eo2eNYFxPV3tM4="
 
+cache:
+  directories:
+    - "node_modules"
+
 install:
   - "npm install"
   - "npm install -g snyk"
 
 script:
+  - "npm run test"
+  - "npm run build"
   - "sonar-scanner"
   - "snyk test"
 

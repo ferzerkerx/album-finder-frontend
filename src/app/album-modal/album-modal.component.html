@@ -1,0 +1,31 @@
+<app-modal title="Album">
+  <form #f="ngForm" (ngSubmit)="save(f)">
+    <div class="form-group">
+      <input-field name="title"
+                   label="Title"
+                   errorMessage="Title is required"
+                   [(ngModel)]="album.title"
+                   required>
+      </input-field>
+    </div>
+    <div class="form-group">
+      <input-field name="year"
+                   label="Year"
+                   pattern="[1-9]\d{3}"
+                   errorMessage="Year is required"
+                   [(ngModel)]="album.year"
+                   required>
+      </input-field>
+    </div>
+    <div class="form-group">
+      <label for="artist">Artist:</label>
+      <input *ngIf="!album.isNew" type="text" class="form-control" id="artist" [value]="album.artist.name" readonly/>
+
+      <select *ngIf="album.isNew" class="form-control" name="artist" id="artist" [(ngModel)]="album.artist" required>
+        <option *ngFor="let albumArtist of allArtists" [ngValue]="albumArtist">{{albumArtist.name}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!f.form.valid">Submit</button>
+  </form>
+</app-modal>
