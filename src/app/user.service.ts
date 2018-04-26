@@ -37,9 +37,10 @@ export class UserService {
   }
 
   private static hasAdminAuthority(value) {
-    return value.authorities && value.authorities
-      .map(e => e.authority)
-      .includes('ROLE_ADMIN');
+    return (
+      value.authorities &&
+      value.authorities.map(e => e.authority).includes('ROLE_ADMIN')
+    );
   }
 
   doLogout(): void {
