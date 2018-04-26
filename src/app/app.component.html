@@ -4,10 +4,10 @@
     <a routerLink="/artists">Artists</a>
   </nav>
   <span *ngIf="!userInfo.authenticated">
-    <button type="button" class="btn btn-primary"(click)="openLoginModal()">Login</button>
+    <button type="button" class="btn btn-primary" (click)="openLoginModal()">Login</button>
   </span>
   <span *ngIf="userInfo.authenticated">
-    <button type="button" class="btn btn-primary"(click)="logout()">Logout</button>
+    <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
   </span>
   <router-outlet></router-outlet>
 
