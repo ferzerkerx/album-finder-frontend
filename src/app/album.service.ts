@@ -58,7 +58,7 @@ export class AlbumService {
         .let(parseResponse);
     } else {
       return this.http
-        .post<Album>(url(`/admin/artist/${album.artist.id}/album`), album)
+        .post<Album>(url(`admin/artist/${album.artist.id}/album`), album)
         .let(parseResponse);
     }
   }

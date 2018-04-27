@@ -14,6 +14,8 @@ import { InputComponent } from '../input/input.component';
 import { ModalComponent } from '../modal/modal.component';
 import { AlbumService } from '../album.service';
 import { UserService } from '../user.service';
+import {Album} from "../Album";
+import {Artist} from "../Artist";
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
@@ -48,5 +50,21 @@ describe('AlbumsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should filter', () => {
+    component.foundAlbums =  [
+      { id: 1, title: 'fakeAlbum', year: '2014', artist: new Artist() },
+      { id: 2, title: 'realAlbum', year: '2018', artist: new Artist() }
+    ] as Album[];
+
+    component.searchFilter = 'fake';
+
+    component.filterResults();
+
+    fixture.detectChanges();
+
+    expect(component.filteredAlbums.length).toEqual(1);
+    expect(component.filteredAlbums[0].title).toEqual('fakeAlbum');
   });
 });

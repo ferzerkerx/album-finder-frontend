@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Artist } from '../Artist';
+import {Album} from "../Album";
 
 describe('ArtistModalComponent', () => {
   let component: ArtistModalComponent;

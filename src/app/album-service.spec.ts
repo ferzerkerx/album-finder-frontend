@@ -85,4 +85,104 @@ describe('AlbumService', () => {
       req.flush(expectedAlbums);
     });
   });
+
+  describe('#deleteArtist', () => {
+    beforeEach(() => {
+      albumService = TestBed.get(AlbumService);
+    });
+
+    it('should delete artist', () => {
+      albumService.deleteArtist(10).subscribe(()=>{});
+      const req = httpTestingController.expectOne(
+        'http://localhost:8080/admin/artist/10'
+      );
+      expect(req.request.method).toEqual('DELETE');
+
+      req.flush({});
+    });
+  });
+
+  describe('#deleteAlbum', () => {
+    beforeEach(() => {
+      albumService = TestBed.get(AlbumService);
+    });
+
+    it('should delete album', () => {
+      albumService.deleteAlbum(10).subscribe(()=>{});
+      const req = httpTestingController.expectOne(
+        'http://localhost:8080/admin/album/10'
+      );
+      expect(req.request.method).toEqual('DELETE');
+
+      req.flush({});
+    });
+  });
+
+  describe('#saveArtist', () => {
+    let artist: Artist;
+
+    beforeEach(() => {
+      albumService = TestBed.get(AlbumService);
+    });
+
+    it('should save artist', () => {
+      artist = {name: 'A'};
+      albumService.saveArtist(artist).subscribe((saveArtist)=>{
+        expect(saveArtist.name).toBe(artist.name);
+      });
+      const req = httpTestingController.expectOne(
+        'http://localhost:8080/admin/artist'
+      );
+      expect(req.request.method).toEqual('POST');
+
+      req.flush(artist);
+    });
+
+    it('should update artist', () => {
+      artist = {name: 'A', id: 3};
+      albumService.saveArtist(artist).subscribe((saveArtist)=>{
+        expect(saveArtist.name).toBe(artist.name);
+      });
+      const req = httpTestingController.expectOne(
+        'http://localhost:8080/admin/artist/3'
+      );
+      expect(req.request.method).toEqual('PUT');
+
+      req.flush(artist);
+    });
+  });
+
+  describe('#saveAlbum', () => {
+    let album: Album;
+
+    beforeEach(() => {
+      albumService = TestBed.get(AlbumService);
+    });
+
+    it('should save album', () => {
+        album = new Album({ id:0, title: 'A', year: '2014', artist: {id:2, name:'theartist'} });
+        albumService.saveAlbum(album).subscribe((saveArtist)=>{
+        expect(saveArtist.title).toBe(album.title);
+      });
+      const req = httpTestingController.expectOne(
+        'http://localhost:8080/admin/artist/2/album'
+      );
+      expect(req.request.method).toEqual('POST');
+
+      req.flush(album);
+    });
+
+    it('should update album', () => {
+      album = new Album({ id:10, title: 'A', year: '2014', artist: {id:2, name:'theartist'} });
+      albumService.saveAlbum(album).subscribe((saveArtist)=>{
+        expect(saveArtist.title).toBe(album.title);
+      });
+      const req = httpTestingController.expectOne(
+        'http://localhost:8080/admin/album/10'
+      );
+      expect(req.request.method).toEqual('PUT');
+
+      req.flush(album);
+    });
+  });
 });

@@ -14,6 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserService } from '../user.service';
 import { ModalComponent } from '../modal/modal.component';
+import {Artist} from "../Artist";
 
 describe('ArtistsComponent', () => {
   let component: ArtistsComponent;
@@ -49,4 +50,20 @@ describe('ArtistsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should filter', () => {
+    component.foundArtists =  [
+      { id: 1, name: 'fakeArtist' },
+      { id: 2, name: 'realArtist' }
+    ] as Artist[];
+
+    component.searchFilter = 'fake';
+
+    component.filterResults();
+
+    fixture.detectChanges();
+
+    expect(component.filteredArtists.length).toEqual(1);
+    expect(component.filteredArtists[0].name).toEqual('fakeArtist');
+  })
 });
