@@ -11,7 +11,10 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent extends ModalComponent {
-  constructor(private userService: UserService, public bsModalRef: BsModalRef) {
+  constructor(
+    private readonly userService: UserService,
+    public bsModalRef: BsModalRef
+  ) {
     super(bsModalRef);
   }
 

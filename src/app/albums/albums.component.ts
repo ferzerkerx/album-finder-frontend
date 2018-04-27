@@ -19,8 +19,8 @@ export class AlbumsComponent extends UserInfoAwareComponent {
   @ViewChild('searchForm') searchForm: NgForm;
 
   constructor(
-    private albumService: AlbumService,
-    private bsModalService: BsModalService,
+    private readonly albumService: AlbumService,
+    private readonly bsModalService: BsModalService,
     protected userService: UserService
   ) {
     super(userService);
@@ -77,7 +77,7 @@ export class AlbumsComponent extends UserInfoAwareComponent {
     const bsModalRef = this.bsModalService.show(AlbumModalComponent, {
       initialState
     });
-    bsModalRef.content.onSave.subscribe(wasSaved => {
+    bsModalRef.content.onActionClicked.subscribe(wasSaved => {
       if (wasSaved) {
         this.refreshResults();
       }

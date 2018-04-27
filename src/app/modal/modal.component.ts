@@ -8,14 +8,13 @@ import { Subject } from 'rxjs/Subject';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  //TODO rename
-  public onSave: Subject<boolean>;
-  @Input() title: string = '';
+  public onActionClicked: Subject<boolean>;
+  @Input() title = '';
 
   constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit() {
-    this.onSave = new Subject();
+    this.onActionClicked = new Subject();
   }
 
   close() {
@@ -24,10 +23,10 @@ export class ModalComponent implements OnInit {
 
   protected onSuccess() {
     this.close();
-    this.onSave.next(true);
+    this.onActionClicked.next(true);
   }
 
   protected onFailure() {
-    this.onSave.next(false);
+    this.onActionClicked.next(false);
   }
 }

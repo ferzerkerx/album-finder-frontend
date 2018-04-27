@@ -27,15 +27,19 @@ describe('UserService', () => {
   });
 
   describe('#Login', () => {
+    function getCredentials() {
+      return { username: 'user', password: '' };
+    }
+    const credentials = getCredentials();
+
     it('should include authorization headers', () => {
-      const credentials = { username: 'user', password: 'secret' };
       userService.userInfo$.subscribe(userInfo => {
         expect(userInfo.authenticated).toBeTruthy();
       });
 
       userService.doLogin(credentials);
 
-      let hashedCredentials = btoa(
+      const hashedCredentials = btoa(
         `${credentials.username}:${credentials.password}`
       );
       const req = httpTestingController.expectOne('http://localhost:8080/user');

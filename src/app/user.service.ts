@@ -8,14 +8,14 @@ import { handleError, url } from './service.util';
 
 @Injectable()
 export class UserService {
-  private userInfoSource = new Subject<UserInfo>();
+  private readonly userInfoSource = new Subject<UserInfo>();
 
   userInfo$: Observable<UserInfo> = this.userInfoSource.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   doLogin(credentials): void {
-    let hashedCredentials = btoa(
+    const hashedCredentials = btoa(
       `${credentials.username}:${credentials.password}`
     );
 

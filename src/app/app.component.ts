@@ -13,8 +13,8 @@ export class AppComponent extends UserInfoAwareComponent {
   title = 'app';
 
   constructor(
-    private modalService: BsModalService,
-    protected userService: UserService
+    private readonly modalService: BsModalService,
+    protected readonly userService: UserService
   ) {
     super(userService);
   }

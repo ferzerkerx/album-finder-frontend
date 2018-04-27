@@ -75,7 +75,7 @@ export class ArtistsComponent extends UserInfoAwareComponent {
     const bsModalRef = this.bsModalService.show(ArtistModalComponent, {
       initialState
     });
-    bsModalRef.content.onSave.subscribe(wasSaved => {
+    bsModalRef.content.onActionClicked.subscribe(wasSaved => {
       if (wasSaved) {
         this.refreshResults();
       }

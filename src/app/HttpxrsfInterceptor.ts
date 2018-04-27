@@ -13,7 +13,7 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
   static headerName = 'X-XSRF-TOKEN';
   static xsrfMethods = ['post', 'delete', 'put'];
 
-  constructor(private tokenExtractor: HttpXsrfTokenExtractor) {}
+  constructor(private readonly tokenExtractor: HttpXsrfTokenExtractor) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -22,7 +22,7 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
     const requestMethod = HttpXsrfInterceptor.requestMethod(req);
 
     if (HttpXsrfInterceptor.shouldInterceptRequest(requestMethod)) {
-      const token = this.tokenExtractor.getToken() as string;
+      const token = this.tokenExtractor.getToken();
       if (HttpXsrfInterceptor.shouldAddXsrfToken(token, req)) {
         req = req.clone({
           headers: req.headers.set(HttpXsrfInterceptor.headerName, token)
@@ -48,7 +48,7 @@ export class HttpXsrfInterceptor implements HttpInterceptor {
   }
 
   private static requestMethod(req: HttpRequest<any>): string {
-    let requestMethod: string = req.method;
+    const requestMethod: string = req.method;
     return requestMethod.toLowerCase();
   }
 }

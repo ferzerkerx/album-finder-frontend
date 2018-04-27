@@ -7,7 +7,7 @@ import { checkForErrors, parseResponse, url } from './service.util';
 
 @Injectable()
 export class AlbumService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   listArtistByName(artistName: string): Observable<Artist[]> {
     const params: HttpParams = new HttpParams().set('name', artistName);
