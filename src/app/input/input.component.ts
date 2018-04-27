@@ -20,7 +20,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() errorMessage: string;
   @Input() label: string;
   @Input() pattern = '';
-  @Input() required: boolean = false;
+  @Input() required = false;
   private innerValue = '';
 
   constructor() {}

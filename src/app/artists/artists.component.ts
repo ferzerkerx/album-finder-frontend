@@ -19,9 +19,9 @@ export class ArtistsComponent extends UserInfoAwareComponent {
   @ViewChild('searchForm') searchForm: NgForm;
 
   constructor(
-    private albumService: AlbumService,
-    protected userService: UserService,
-    private bsModalService: BsModalService
+    private readonly albumService: AlbumService,
+    protected readonly userService: UserService,
+    private readonly bsModalService: BsModalService
   ) {
     super(userService);
   }

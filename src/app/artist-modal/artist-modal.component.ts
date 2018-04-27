@@ -14,7 +14,7 @@ export class ArtistModalComponent extends ModalComponent {
   artist: Artist;
 
   constructor(
-    private albumService: AlbumService,
+    private readonly albumService: AlbumService,
     public bsModalRef: BsModalRef
   ) {
     super(bsModalRef);
