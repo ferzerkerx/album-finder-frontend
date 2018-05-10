@@ -10,3 +10,6 @@
  - Includes simple CRUD functionality
  - Some features are restricted to admin users
  - Uses Album finder API
+
+
+![alt](https://github.com/ferzerkerx/album-finder-frontend/raw/master/screenshots/album-finder.png)
