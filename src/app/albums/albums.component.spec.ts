@@ -14,33 +14,31 @@ import { InputComponent } from '../input/input.component';
 import { ModalComponent } from '../modal/modal.component';
 import { AlbumService } from '../album.service';
 import { UserService } from '../user.service';
-import {Album} from "../Album";
-import {Artist} from "../Artist";
+import { Album } from '../Album';
+import { Artist } from '../Artist';
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
   let fixture: ComponentFixture<AlbumsComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          FormsModule,
-          BrowserModule,
-          ModalModule,
-          HttpClientTestingModule
-        ],
-        declarations: [AlbumsComponent, InputComponent, ModalComponent],
-        providers: [
-          PositioningService,
-          ComponentLoaderFactory,
-          BsModalService,
-          AlbumService,
-          UserService
-        ]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        BrowserModule,
+        ModalModule,
+        HttpClientTestingModule
+      ],
+      declarations: [AlbumsComponent, InputComponent, ModalComponent],
+      providers: [
+        PositioningService,
+        ComponentLoaderFactory,
+        BsModalService,
+        AlbumService,
+        UserService
+      ]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AlbumsComponent);
@@ -53,7 +51,7 @@ describe('AlbumsComponent', () => {
   });
 
   it('should filter', () => {
-    component.foundAlbums =  [
+    component.foundAlbums = [
       { id: 1, title: 'fakeAlbum', year: '2014', artist: new Artist() },
       { id: 2, title: 'realAlbum', year: '2018', artist: new Artist() }
     ] as Album[];

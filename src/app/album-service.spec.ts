@@ -92,7 +92,7 @@ describe('AlbumService', () => {
     });
 
     it('should delete artist', () => {
-      albumService.deleteArtist(10).subscribe(()=>{});
+      albumService.deleteArtist(10).subscribe(() => {});
       const req = httpTestingController.expectOne(
         'http://localhost:8080/admin/artist/10'
       );
@@ -108,7 +108,7 @@ describe('AlbumService', () => {
     });
 
     it('should delete album', () => {
-      albumService.deleteAlbum(10).subscribe(()=>{});
+      albumService.deleteAlbum(10).subscribe(() => {});
       const req = httpTestingController.expectOne(
         'http://localhost:8080/admin/album/10'
       );
@@ -126,8 +126,8 @@ describe('AlbumService', () => {
     });
 
     it('should save artist', () => {
-      artist = {name: 'A'};
-      albumService.saveArtist(artist).subscribe((saveArtist)=>{
+      artist = { name: 'A' };
+      albumService.saveArtist(artist).subscribe(saveArtist => {
         expect(saveArtist.name).toBe(artist.name);
       });
       const req = httpTestingController.expectOne(
@@ -139,8 +139,8 @@ describe('AlbumService', () => {
     });
 
     it('should update artist', () => {
-      artist = {name: 'A', id: 3};
-      albumService.saveArtist(artist).subscribe((saveArtist)=>{
+      artist = { name: 'A', id: 3 };
+      albumService.saveArtist(artist).subscribe(saveArtist => {
         expect(saveArtist.name).toBe(artist.name);
       });
       const req = httpTestingController.expectOne(
@@ -160,8 +160,13 @@ describe('AlbumService', () => {
     });
 
     it('should save album', () => {
-        album = new Album({ id:0, title: 'A', year: '2014', artist: {id:2, name:'theartist'} });
-        albumService.saveAlbum(album).subscribe((saveArtist)=>{
+      album = new Album({
+        id: 0,
+        title: 'A',
+        year: '2014',
+        artist: { id: 2, name: 'theartist' }
+      });
+      albumService.saveAlbum(album).subscribe(saveArtist => {
         expect(saveArtist.title).toBe(album.title);
       });
       const req = httpTestingController.expectOne(
@@ -173,8 +178,13 @@ describe('AlbumService', () => {
     });
 
     it('should update album', () => {
-      album = new Album({ id:10, title: 'A', year: '2014', artist: {id:2, name:'theartist'} });
-      albumService.saveAlbum(album).subscribe((saveArtist)=>{
+      album = new Album({
+        id: 10,
+        title: 'A',
+        year: '2014',
+        artist: { id: 2, name: 'theartist' }
+      });
+      albumService.saveAlbum(album).subscribe(saveArtist => {
         expect(saveArtist.title).toBe(album.title);
       });
       const req = httpTestingController.expectOne(

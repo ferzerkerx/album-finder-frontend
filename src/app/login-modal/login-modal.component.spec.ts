@@ -13,20 +13,18 @@ describe('LoginModalComponent', () => {
   let component: LoginModalComponent;
   let fixture: ComponentFixture<LoginModalComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          FormsModule,
-          BrowserModule,
-          ModalModule,
-          HttpClientTestingModule
-        ],
-        declarations: [LoginModalComponent, InputComponent, ModalComponent],
-        providers: [BsModalRef, UserService]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        BrowserModule,
+        ModalModule,
+        HttpClientTestingModule
+      ],
+      declarations: [LoginModalComponent, InputComponent, ModalComponent],
+      providers: [BsModalRef, UserService]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginModalComponent);

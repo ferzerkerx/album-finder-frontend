@@ -14,20 +14,18 @@ describe('AlbumModalComponent', () => {
   let component: AlbumModalComponent;
   let fixture: ComponentFixture<AlbumModalComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          FormsModule,
-          BrowserModule,
-          ModalModule,
-          HttpClientTestingModule
-        ],
-        declarations: [AlbumModalComponent, InputComponent, ModalComponent],
-        providers: [BsModalRef, AlbumService]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        BrowserModule,
+        ModalModule,
+        HttpClientTestingModule
+      ],
+      declarations: [AlbumModalComponent, InputComponent, ModalComponent],
+      providers: [BsModalRef, AlbumService]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AlbumModalComponent);

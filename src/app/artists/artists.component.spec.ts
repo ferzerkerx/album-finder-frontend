@@ -14,32 +14,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserService } from '../user.service';
 import { ModalComponent } from '../modal/modal.component';
-import {Artist} from "../Artist";
+import { Artist } from '../Artist';
 
 describe('ArtistsComponent', () => {
   let component: ArtistsComponent;
   let fixture: ComponentFixture<ArtistsComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          FormsModule,
-          BrowserModule,
-          ModalModule,
-          HttpClientTestingModule
-        ],
-        declarations: [ArtistsComponent, InputComponent, ModalComponent],
-        providers: [
-          PositioningService,
-          ComponentLoaderFactory,
-          BsModalService,
-          AlbumService,
-          UserService
-        ]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        BrowserModule,
+        ModalModule,
+        HttpClientTestingModule
+      ],
+      declarations: [ArtistsComponent, InputComponent, ModalComponent],
+      providers: [
+        PositioningService,
+        ComponentLoaderFactory,
+        BsModalService,
+        AlbumService,
+        UserService
+      ]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ArtistsComponent);
@@ -52,7 +50,7 @@ describe('ArtistsComponent', () => {
   });
 
   it('should filter', () => {
-    component.foundArtists =  [
+    component.foundArtists = [
       { id: 1, name: 'fakeArtist' },
       { id: 2, name: 'realArtist' }
     ] as Artist[];
@@ -65,5 +63,5 @@ describe('ArtistsComponent', () => {
 
     expect(component.filteredArtists.length).toEqual(1);
     expect(component.filteredArtists[0].name).toEqual('fakeArtist');
-  })
+  });
 });

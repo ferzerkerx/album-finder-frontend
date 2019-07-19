@@ -9,7 +9,10 @@ export const url = path => {
   return `${environment.apiUrl}/${path}`;
 };
 
-export const parseResponse = pipe(catchError(handleError), _responseData);
+export const parseResponse = pipe(
+  catchError(handleError),
+  _responseData
+);
 export const checkForErrors = pipe(catchError(handleError));
 
 function _responseData<T>(observable: Observable<T>) {
